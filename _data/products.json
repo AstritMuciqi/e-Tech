@@ -1,0 +1,38 @@
+[
+	{
+		"_id": "5d713995b721c3bb38c1f5d0",		
+		"name": "Product1",
+		"model": "detailedProduct1",
+		"description": "Devworks is a full stack JavaScript Bootcamp located in the heart of Boston that focuses on the technologies you need to get a high paying job as a web developer",
+		"price" : 23.99,
+		"category" : "Category1",
+		"brand" : "Brand1"
+	},
+	{
+		"_id": "5d713995b721c3bb38c1f5d4",		
+		"name": "Product2",
+		"model": "detailedProduct2",
+		"description": "Devworks is a full stack JavaScript Bootcamp located in the heart of Boston that focuses on the technologies you need to get a high paying job as a web developer",
+		"price" : 23.99,
+		"category" : "Category1",
+		"brand" : "Brand1"
+	},	
+	{
+		"_id": "5d713995b721c3bb38c1f5d3",		
+		"name": "Product3",
+		"model": "detailedProduct3",
+		"description": "Devworks is a full stack JavaScript Bootcamp located in the heart of Boston that focuses on the technologies you need to get a high paying job as a web developer",
+		"price" : 23.99,
+		"category" : "Category1",
+		"brand" : "Brand1"
+	},	
+	{
+		"_id": "5d713995b721c3bb38c1f5d1",		
+		"name": "Product4",
+		"model": "detailedProduct4",
+		"description": "Devworks is a full stack JavaScript Bootcamp located in the heart of Boston that focuses on the technologies you need to get a high paying job as a web developer",
+		"price" : 23.99,
+		"category" : "Category1",
+		"brand" : "Brand1"
+	}
+]

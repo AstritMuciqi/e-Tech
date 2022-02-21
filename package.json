@@ -10,9 +10,12 @@
   "author": "Astrit Muçiqi",
   "license": "MIT",
   "dependencies": {
+    "colors": "^1.4.0",
     "dotenv": "^16.0.0",
     "express": "^4.17.2",
-    "morgan": "^1.10.0"
+    "mongoose": "^6.2.2",
+    "morgan": "^1.10.0",
+    "slugify": "^1.6.5"
   },
   "devDependencies": {
     "nodemon": "^2.0.15"
