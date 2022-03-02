@@ -23,7 +23,7 @@
                     <a style="width:70%;font-size:11px;" class="btn btn-dark text-light">
                         <i class="bi bi-cart-plus "></i> Add to Cart (Price {{product.price}})
                     </a>
-                    <a style="width:40%; font-size:10px;" class="btn btn-outline-dark float-right ">
+                    <a v-bind:href="`view/${product._id}`" style="width:40%; font-size:10px;" class="btn btn-outline-dark float-right ">
                         <i class="bi bi-eye-fill "></i> Show Details
                     </a>
                   </p>

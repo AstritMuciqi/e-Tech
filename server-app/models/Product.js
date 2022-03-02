@@ -21,9 +21,13 @@ const ProductSchema = new mongoose.Schema({
         required : [true, "Please add a description"],
         maxlength : [500, "Description can't be more than 500 characters"]
     },
-    price: Number,
+    price:{
+        type: Number,
+        required : [true, "Please add a price"]
+    },
     category: {
-        type: String,
+        type: mongoose.Schema.ObjectId,
+        ref:"Category",
         required : [true, "Please select a category"],
     },
     brand: {

@@ -50,6 +50,23 @@ const routes = [
     component: () =>
       import(/* webpackChunkName: "listing" */ "../views/Listing.vue"),
   },
+  {
+    path: "/create",
+    name: "Create",
+    // meta: {
+    //   isAuthenticated: true,
+    // },
+    component: () =>
+      import(/* webpackChunkName: "create" */ "../views/Create.vue"),
+  },
+  {
+    path: "/view/:id",
+    name: "View",
+    // meta: {
+    //   isAuthenticated: true,
+    // },
+    component: () => import(/* webpackChunkName: "view" */ "../views/View.vue"),
+  },
 ];
 
 const router = new VueRouter({
