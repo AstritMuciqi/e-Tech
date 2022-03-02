@@ -1,0 +1,23 @@
+[
+	{
+		"_id": "621930d53ade96f8bf749efa",
+		"name": "Category 1",
+		"photo": "no-photo.jpg"
+	},
+	{
+		"_id": "621932283ade96f8bf749efc",
+		"name": "Category 2",
+		"photo": "no-photo.jpg"
+	},
+	{
+		"_id": "621932423ade96f8bf749efe",
+		"name": "Category 3",
+		"photo": "no-photo.jpg"
+		
+	},
+	{
+		"_id": "621932503ade96f8bf749f00",
+		"name": "Category 4",
+		"photo": "no-photo.jpg"
+	}
+]
