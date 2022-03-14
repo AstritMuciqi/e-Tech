@@ -1,0 +1,102 @@
+<template>
+  <v-main>
+    <v-btn style="margin: 10px 930px 10px 0; font-size:20px; background-color:green;color:white;text-decoration:none;"  to="addProduct">Add Product</v-btn>
+    <v-alert border="left" close-text="Close Alert" color="green accent-4" dark dismissible v-if="this.$route.params.message">
+      {{this.$route.params.message}}
+    </v-alert>
+    <v-data-table
+    style="width:1144px !important;margin-left:60px !important;"
+    :headers="headers"
+    :items="productList"
+    :items-per-page="5"
+    class="elevation-1"
+  ><template v-slot:[`item.photo`]="{ item }">
+            <div class="p-2">
+              <img v-bind:src="require(`../../assets/${item.photo}`)" height="100px">
+            </div>
+          </template>
+          <template v-slot:[`item.actions`]="{ item }">
+            <div style="white-space: nowrap;">
+              <a v-bind:href="`editProduct/${item._id}`"><button class="btn btn-outline-warning">Edit</button></a> | 
+              <button @click="deleteProduct(item._id)" class="btn btn-outline-danger">Delete</button>
+            </div>
+            
+          </template>
+          
+          </v-data-table>
+  </v-main>
+</template>
+
+<style>
+ .v-data-table-header{
+   background-color: aqua;
+      white-space: nowrap;
+
+ }
+ .v-data-table-header tr th span{
+   color: rgb(0, 0, 0);
+   font-size: 16px;
+   white-space: nowrap;
+  
+}
+
+</style>
+
+<script>
+import apiRequest from "../../utility/apiRequest";
+import { mapGetters } from "vuex";
+  export default {
+    created() {
+      this.fetchProducts();
+      this.fetchCategories();
+    },
+
+    methods: {
+      async fetchProducts() {
+        const result = await apiRequest.getProductList();
+        this.$store.dispatch("fetchProducts", result.map((productList => 
+                             ({ 
+                               ...productList, // Association, same as Object.assign
+                               category: this.Test(productList.category)
+                             }))));
+      },
+      async Test(id){
+      const result = await apiRequest.getCategoryById(id);
+      return result && result.name;
+    },
+      async deleteProduct(id){
+        const response = await apiRequest.removeProduct(id);
+        window.location.reload();
+        this.$router.push({ name : "Products",params : { message: response.message}});
+        alert("Product Deleted Successfully");
+      }
+    },
+    computed: {
+      ...mapGetters({
+        productList: "productList",
+        categoryList: "categoryList",
+      }),
+    },
+    data () {
+      return {
+        headers: [
+          {
+            text: 'Image',
+            align: 'start',
+            sortable: false,
+            value: 'photo',
+          },
+          { text: 'Name', value: 'name' },
+          { text: 'Model', value: 'model' },
+          { text: 'Description', value: 'description' },
+          { text: 'Price', value: 'price' },
+          { text: 'Category', value: 'category' },
+          { text: 'Brand', value: 'brand' },
+          { text: 'Actions', value: 'actions'},
+
+
+        ],
+      }
+    },
+  }
+</script>

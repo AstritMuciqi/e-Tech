@@ -1,23 +1,19 @@
 <template>
-  <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png" />
-    <div v-if="user.data">Hello</div>
-    <HelloWorld msg="Welcome to Your Vue.js App" />
-  </div>
+        <Listing />
 </template>
 
 <script>
-// @ is an alias to /src
-// import { mapGetters } from "vuex";
+import Listing from "./Listing.vue";
+
 
 export default {
-  name: "Home",
-  components: {
+  name: 'App',
+  components : {
+    Listing
   },
-  // computed: {
-  //   ...mapGetters({
-  //     user: "user",
-  //   }),
-  // },
+
+  data: () => ({
+    //
+  }),
 };
 </script>

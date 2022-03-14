@@ -1,11 +1,11 @@
 // import { getAuth } from "firebase/auth";
 import apiCaller from "../apiCaller";
 
-const createProduct = async (productBody) => {
+const removeProduct = async (productId) => {
   // const token = await getAuth().currentUser.getIdToken();
-  const result = (await apiCaller.post("products/", productBody)).data;
+  const result = (await apiCaller.delete(`products/${productId}`)).data;
 
   return result;
 };
 
-export default createProduct;
+export default removeProduct;

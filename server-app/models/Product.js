@@ -36,8 +36,7 @@ const ProductSchema = new mongoose.Schema({
     },
     photo: {
         type: String,
-        default: 'anonymous.jpg'
-        //required : [true, "Please insert a photo"],
+        required : [true, "Please insert a photo"],
     }
 
 

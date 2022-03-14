@@ -181,7 +181,7 @@ h4 p{
 
 </style>
 <script>
-import apiRequest from "../utility/apiRequest";
+import apiRequest from "../../utility/apiRequest";
 
 export default {
 

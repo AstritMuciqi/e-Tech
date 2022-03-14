@@ -31,6 +31,11 @@
             <TextInput v-model="form.brand" />
           </div>
 
+          <div>
+            <input type="file">
+          
+          </div>
+
 
 
           <div class="form-group">

@@ -1,11 +1,11 @@
 // import { getAuth } from "firebase/auth";
 import apiCaller from "../apiCaller";
 
-const createProduct = async (productBody) => {
+const editProduct = async (productId,productBody) => {
   // const token = await getAuth().currentUser.getIdToken();
-  const result = (await apiCaller.post("products/", productBody)).data;
+  const result = (await apiCaller.put(`products/${productId}`, productBody)).data;
 
   return result;
 };
 
-export default createProduct;
+export default editProduct;

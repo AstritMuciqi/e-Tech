@@ -1,12 +1,15 @@
 <template>
   <section>
+    <v-alert border="left" close-text="Close Alert" color="green accent-4" dark dismissible v-if="this.$route.params.message">
+      {{this.$route.params.message}}
+    </v-alert>
     <h1>
       Hello these are the available Products
     </h1>
     <div >
         <div style="display:flex;flex-wrap:wrap;width:1200px;margin-left:40px;" class="card-deck">
           <div style="flex:1 0 24.333333%;" class="card" v-for="product in productList" :key="product.id">
-            <img style="height:300px" class="card-img-top" v-bind:src="require(`../assets/${product.name}.jpg`)"   alt="Card image cap">
+            <img style="height:300px" class="card-img-top"  v-bind:src="require(`../assets/${product.photo}`)"   alt="Card image cap">
             <div class="card-body">
               <h5 style="display:inline-block; white-space: nowrap;margin-right:10px;" class="card-title">{{product.name}} - {{product.model}}</h5>
               <p style="overflow: hidden;
@@ -48,12 +51,14 @@ export default {
     },
   },
   data() {
-    return {};
+    return {}
   },
   computed: {
     ...mapGetters({
       productList: "productList",
+      
     }),
-  },
+    
+  }
 };
 </script>
