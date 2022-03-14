@@ -24,6 +24,8 @@
                 <router-link style="font-size:24px;margin:20px;" to="/">Home</router-link> 
                 <router-link style="font-size:24px;margin:20px;" to="/about">About</router-link> 
                 <router-link style="font-size:24px;margin:20px;" to="/listing">Listing</router-link>
+                <router-link style="font-size:24px;margin:20px;" to="/register">Register</router-link>
+                <router-link style="font-size:24px;margin:20px;" to="/login">Login</router-link>  
             </div>
             <hr>
        </div>

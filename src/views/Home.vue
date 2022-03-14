@@ -4,6 +4,8 @@
 
 <script>
 import Listing from "./Listing.vue";
+// @ is an alias to /src
+import { mapGetters } from "vuex";
 
 
 export default {
@@ -15,5 +17,10 @@ export default {
   data: () => ({
     //
   }),
+  computed: {
+    ...mapGetters({
+      user: "user",
+    }),
+  },
 };
 </script>

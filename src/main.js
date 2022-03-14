@@ -6,7 +6,8 @@ import App from "./App.vue";
 import router from "./router";
 import store from "./store";
 import "vuetify/dist/vuetify.min.css";
-import '@mdi/font/css/materialdesignicons.css'
+import '@mdi/font/css/materialdesignicons.css';
+import "./services/firebase";
 // import "./services/firebase";
 /* import the fontawesome core */
 import { library } from '@fortawesome/fontawesome-svg-core'
@@ -19,7 +20,7 @@ import { fab } from '@fortawesome/free-brands-svg-icons'
 /* import font awesome icon component */
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
-import vuetify from './plugins/vuetify'
+import vuetify from './plugins/vuetify';
 
 library.add(fas, fab);
 

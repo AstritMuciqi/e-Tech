@@ -28,6 +28,27 @@ const routes = [
       import(/* webpackChunkName: "listing" */ "../views/Listing.vue"),
   },
   {
+    path: "/register",
+    name: "Register",
+    component: () =>
+      import(/* webpackChunkName: "register" */ "../views/Register.vue"),
+  },
+  {
+    path: "/login",
+    name: "Login",
+    component: () =>
+      import(/* webpackChunkName: "login" */ "../views/Login.vue"),
+  },
+  // {
+  //   path: "/list-users",
+  //   name: "ListUsers",
+  //   meta: {
+  //     isAdmin: true,
+  //   },
+  //   component: () =>
+  //     import(/* webpackChunkName: "list-users" */ "../views/ListUsers.vue"),
+  // },
+  {
     path: "/view/:id",
     name: "View",
     component: () => import(/* webpackChunkName: "view" */ "../views/View.vue"),
@@ -112,5 +133,22 @@ const router = new VueRouter({
   base: process.env.BASE_URL,
   routes,
 });
+
+// router.beforeEach((to, from, next) => {
+//   onAuthStateChanged(getAuth(), async (user) => {
+//     if (to.matched.some((record) => record.meta.isAuthenticated && !user)) {
+//       next("/login");
+//     } else if (to.matched.some((record) => record.meta.isAdmin)) {
+//       const tokenResult = await getAuth().currentUser.getIdTokenResult();
+//       if (!tokenResult.claims.admin) {
+//         next("/listing");
+//       } else {
+//         next();
+//       }
+//     } else {
+//       next();
+//     }
+//   });
+// });
 
 export default router;

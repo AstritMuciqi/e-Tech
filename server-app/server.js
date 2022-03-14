@@ -6,6 +6,8 @@ const connectDB = require("./config/db");
 const colors = require('colors');
 const cors = require('cors');
 const errorHandler = require('./middleware/error');
+const usersRoute = require('./routes/usersRoute');
+const helmet = require('helmet');
 
 
 
@@ -17,9 +19,15 @@ connectDB();
 
 //Route files
 const products = require('./routes/products');
-const categories = require('./routes/categories')
+const categories = require('./routes/categories');
+const getAuthToken = require("./middleware/getAuthToken");
+const checkIfAuthenticated = require("./middleware/checkIfAuthenticated");
 
 const app = express();
+
+app.use(cors());
+
+app.use(helmet());
 
 // Body parser
 app.use(express.json());
@@ -42,9 +50,22 @@ if(process.env.NODE_ENV === 'development'){
 app.use('/api/v1/products/', products);
 app.use('/api/v1/categories', categories);
 
+//users router
+app.use('/users', usersRoute);
+
+
+app.use(express.urlencoded({extended: true}));
+
+// is declared up app.use(express.json());
+
+app.use(getAuthToken);
+
+
 app.use(errorHandler);
 
 const PORT = process.env.PORT || 5000;
+
+
 
 const server = app.listen(
   PORT,

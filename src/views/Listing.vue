@@ -4,7 +4,7 @@
       {{this.$route.params.message}}
     </v-alert>
     <h1>
-      Hello these are the available Products
+      Hello {{user.data && user.data.email}}, these are the available Products
     </h1>
     <div >
         <div style="display:flex;flex-wrap:wrap;width:1200px;margin-left:40px;" class="card-deck">
@@ -56,9 +56,10 @@ export default {
   computed: {
     ...mapGetters({
       productList: "productList",
-      
     }),
-    
+     ...mapGetters({
+        user: "user",
+      }),
   }
 };
 </script>

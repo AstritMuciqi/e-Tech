@@ -21,7 +21,7 @@
     "axios": "^0.25.0",
     "bootstrap-vue": "^2.1.0",
     "core-js": "^3.6.5",
-    "firebase": "^9.6.4",
+    "firebase": "^9.6.7",
     "regenerator-runtime": "^0.13.9",
     "vue": "^2.6.11",
     "vue-router": "^3.2.0",
@@ -54,20 +54,19 @@
   "eslintConfig": {
     "root": true,
     "env": {
-        "node": true
+      "node": true
     },
     "extends": [
-        "plugin:vue/essential",
-        "eslint:recommended"
+      "plugin:vue/essential",
+      "eslint:recommended"
     ],
     "parserOptions": {
-        "parser": "babel-eslint"
+      "parser": "babel-eslint"
     },
     "rules": {
-        "no-unused-vars": "off" 
+      "no-unused-vars": "off"
     }
-}
-,
+  },
   "browserslist": [
     "> 1%",
     "last 2 versions",
