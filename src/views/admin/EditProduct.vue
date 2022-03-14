@@ -16,7 +16,7 @@
             >
                 <v-select :items="categoryList" 
                 item-text="name" 
-                item-value="_id"
+                item-value="name"
                 v-model="form.category"
                 single-line 
                 auto 
@@ -80,7 +80,7 @@ export default {
         this.form.photo = this.photo.name;
         if(this.$refs.form.validate()){
         const response = await apiRequest.editProduct(this.$route.params.id,{...this.form});
-        this.$router.push({ name : "Listing", params : { message: response.message}});
+        this.$router.push({ name : "Products", params : { message: response.message}});
       }
     }
   },

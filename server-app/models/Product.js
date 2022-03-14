@@ -26,8 +26,7 @@ const ProductSchema = new mongoose.Schema({
         required : [true, "Please add a price"]
     },
     category: {
-        type: mongoose.Schema.ObjectId,
-        ref:"Category",
+        type: String,
         required : [true, "Please select a category"],
     },
     brand: {

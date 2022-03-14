@@ -48,22 +48,15 @@ import { mapGetters } from "vuex";
   export default {
     created() {
       this.fetchProducts();
-      this.fetchCategories();
+      this.getCategory();
     },
 
     methods: {
       async fetchProducts() {
         const result = await apiRequest.getProductList();
-        this.$store.dispatch("fetchProducts", result.map((productList => 
-                             ({ 
-                               ...productList, // Association, same as Object.assign
-                               category: this.Test(productList.category)
-                             }))));
+        this.$store.dispatch("fetchProducts", result);
       },
-      async Test(id){
-      const result = await apiRequest.getCategoryById(id);
-      return result && result.name;
-    },
+
       async deleteProduct(id){
         const response = await apiRequest.removeProduct(id);
         window.location.reload();

@@ -6,7 +6,6 @@ import removeProduct from "./product/removeProduct";
 import registerUser from "./user/registerUser";
 
 import getCategoryList from "./category/getCategoryList";
-import getCategoryById from "./category/getCategoryById";
 
 
 
@@ -18,6 +17,5 @@ export default {
   getCategoryList,
   editProduct,
   removeProduct,
-  getCategoryById,
   registerUser,
 };

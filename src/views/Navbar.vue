@@ -1,9 +1,9 @@
 <template>
 
     <div style="color:white;">
-        <div style="background-color:black; display:flex;" class="container-fluid">
+        <div style="background-color:black; display:flex; margin-bottom:1px;" class="container-fluid">
             <a class="navbar-brand">
-            <img style="width:100px;height:100px;" v-bind:src="require('../assets/icon.png')" />
+            <router-link to="/"><img style="width:100px;height:100px;" v-bind:src="require('../assets/icon.png')" /></router-link>
             </a>
             <form style="align-items:center; margin-left:280px;" class="d-flex">
             <input style="width:400px" class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
@@ -18,27 +18,12 @@
 
 
         </div>
-            <div style="background-color:white;" id="nav">
-                
-                <router-link style="font-size:24px;margin:20px;" to="/admin/products">Admin Panel</router-link>
-                <router-link style="font-size:24px;margin:20px;" to="/">Home</router-link> 
-                <router-link style="font-size:24px;margin:20px;" to="/about">About</router-link> 
-                <router-link style="font-size:24px;margin:20px;" to="/listing">Listing</router-link>
-                <router-link style="font-size:24px;margin:20px;" to="/register">Register</router-link>
-                <router-link style="font-size:24px;margin:20px;" to="/login">Login</router-link>  
-            </div>
-            <hr>
        </div>
 
 </template>
 <script>
     export default {
         name: 'Navbar',
-        methods: {
-            setLayout(layout) {
-            this.$store.commit('SET_LAYOUT', layout)
-            }
-        }
 }
     
 

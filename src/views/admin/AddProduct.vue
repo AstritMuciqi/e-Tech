@@ -16,7 +16,7 @@
             >
       <v-select :items="categoryList" 
       item-text="name" 
-      item-value="_id"
+      item-value="name"
       v-model="form.category"
       single-line 
       auto 

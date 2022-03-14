@@ -1,17 +1,23 @@
 <template>
+      <section>
+        <Slider />
         <Listing />
+
+      </section>
+
 </template>
 
 <script>
 import Listing from "./Listing.vue";
-// @ is an alias to /src
+import Slider from "./Slider.vue";
 import { mapGetters } from "vuex";
-
+ 
 
 export default {
   name: 'App',
   components : {
-    Listing
+    Listing,
+    Slider
   },
 
   data: () => ({
