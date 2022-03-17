@@ -53,12 +53,19 @@ import { mapGetters } from "vuex";
 
     methods: {
       async fetchProducts() {
+        this.$isLoading(true);
         const result = await apiRequest.getProductList();
-        this.$store.dispatch("fetchProducts", result);
+        this.$store.dispatch("fetchProducts", result).finally(()=>{
+              this.$isLoading(false)
+      });
       },
 
       async deleteProduct(id){
-        const response = await apiRequest.removeProduct(id);
+        this.$isLoading(true)
+        const response = await apiRequest.removeProduct(id)
+        .finally(()=>{
+              this.$isLoading(false)
+        });
         window.location.reload();
         this.$router.push({ name : "Products",params : { message: response.message}});
         alert("Product Deleted Successfully");

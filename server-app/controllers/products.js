@@ -7,9 +7,10 @@ const Product = require("../models/Product");
 // @access Public
 exports.getProducts = asyncHandler(async (req, res, next) => {
   const products = await Product.find();
-  res
-    .status(200)
-    .json({ success: true, count: products.length, data: products });
+  res.setTimeout(2000, function(){
+        res.status(200);
+        res.json({ success: true, count: products.length, data: products }).time;
+    });
 });
 
 // @desc Get single products
@@ -23,8 +24,14 @@ exports.getProduct = asyncHandler(async (req, res, next) => {
         new ErrorResponse(`Product not found with id of ${req.params.id}`, 404)
       );
     }
-    res.status(200).json({ success: true, data: product });
-    //res.status().json({success:false});
+    res.setTimeout(1000, function(){
+      res.status(200);
+      res.json({
+        success: true,
+        data: product,
+      });
+    });
+     //res.status().json({success:false});
 });
 
 // @desc Create new products
@@ -33,10 +40,12 @@ exports.getProduct = asyncHandler(async (req, res, next) => {
 
 exports.createProduct = asyncHandler(async (req, res, next) => {
     const product = await Product.create(req.body);
-
-    res.status(201).json({
-      success: true,
-      data: product,
+    res.setTimeout(1000, function(){
+      res.status(201);
+      res.json({
+        success: true,
+        data: product,
+      });
     });
 });
 
@@ -54,8 +63,13 @@ exports.updateProduct = asyncHandler(async (req, res, next) => {
         new ErrorResponse(`Product not found with id of ${req.params.id}`, 404)
       );
     }
-    res.status(200).json({ success: true, data: product });
-  
+    res.setTimeout(1000, function(){
+      res.status(200);
+      res.json({
+        success: true,
+        data: product,
+      });
+    })
 });
 
 // @desc Delete  products
@@ -69,6 +83,12 @@ exports.deleteProduct = asyncHandler(async (req, res, next) => {
         new ErrorResponse(`Product not found with id of ${req.params.id}`, 404)
       );
     }
-    res.status(200).json({ success: true, data: {} });
+    res.setTimeout(1000, function(){
+      res.status(200);
+      res.json({
+        success: true,
+        data: {},
+      });
+    });
 
 });

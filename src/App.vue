@@ -18,11 +18,6 @@ export default {
     Navbar,
     Footer
   },
-  computed:{
-    layout (){
-      return this.$store.getters.layout
-    }
-  },
 
   data: () => ({
     //

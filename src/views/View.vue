@@ -65,7 +65,8 @@
 }
 .desc{
 	text-overflow: ellipsis;
-	max-width: 400px;
+	max-width: 200px;
+	min-height:104px;
 
 }
 
@@ -87,7 +88,10 @@ export default {
   },
   methods: {
     async getProduct() {
-      this.product = await apiRequest.getProduct(this.$route.params.id);
+		this.$isLoading(true)
+		this.product = await apiRequest.getProduct(this.$route.params.id).finally(()=>{
+			this.$isLoading(false)
+		});
     },
   },
 };

@@ -85,7 +85,11 @@ export default {
 
         console.log({...this.form});
         if(this.$refs.form.validate()){
-        const response = await apiRequest.createProduct({...this.form});
+           this.$isLoading(true)
+        const response = await apiRequest.createProduct({...this.form})
+        .finally(()=>{
+              this.$isLoading(false)
+      });
         this.$router.push({ name : "Products", params : { message: response.message}});
       }
       

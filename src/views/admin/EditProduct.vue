@@ -59,7 +59,11 @@ export default {
     
   },
   async created(){
-    const response = await apiRequest.getProduct(this.$route.params.id);
+    this.$isLoading(true);
+    const response = await apiRequest.getProduct(this.$route.params.id)
+    .finally(()=>{
+              this.$isLoading(false)
+    });
     this.form = response;
     this.fetchCategories();
 
@@ -77,9 +81,13 @@ export default {
       this.photo = file[0];
     },
     async updateForm(){
+        this.$isLoading(true)
         this.form.photo = this.photo.name;
         if(this.$refs.form.validate()){
-        const response = await apiRequest.editProduct(this.$route.params.id,{...this.form});
+        const response = await apiRequest.editProduct(this.$route.params.id,{...this.form})
+        .finally(()=>{
+              this.$isLoading(false)
+        });
         this.$router.push({ name : "Products", params : { message: response.message}});
       }
     }

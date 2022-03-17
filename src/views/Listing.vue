@@ -60,8 +60,11 @@ export default {
   },
   methods: {
     async fetchProducts() {
+      this.$isLoading(true) // show the loading screen
       const result = await apiRequest.getProductList();
-      this.$store.dispatch("fetchProducts", result);
+      this.$store.dispatch("fetchProducts", result).finally(()=>{
+              this.$isLoading(false)
+      });
     },
     async fetchCategories(){
                 const result = await apiRequest.getCategoryList();

@@ -1,11 +1,11 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
 import Home from "../views/Home.vue";
-// import { onAuthStateChanged, getAuth } from "firebase/auth";
 
 Vue.use(VueRouter);
 
 const routes = [
+ 
   {
     path: "/",
     name: "Home",
@@ -77,7 +77,6 @@ const routes = [
       {
         path: "/admin/products",
         name: "Products",
-    
         component: () =>
           import(/* webpackChunkName: "create" */ "../views/admin/Products.vue"),
           meta: {
@@ -132,23 +131,9 @@ const router = new VueRouter({
   mode: "history",
   base: process.env.BASE_URL,
   routes,
+  scrollBehavior() {
+    document.getElementById('app').scrollIntoView({ behavior: 'smooth' });
+  }
 });
-
-// router.beforeEach((to, from, next) => {
-//   onAuthStateChanged(getAuth(), async (user) => {
-//     if (to.matched.some((record) => record.meta.isAuthenticated && !user)) {
-//       next("/login");
-//     } else if (to.matched.some((record) => record.meta.isAdmin)) {
-//       const tokenResult = await getAuth().currentUser.getIdTokenResult();
-//       if (!tokenResult.claims.admin) {
-//         next("/listing");
-//       } else {
-//         next();
-//       }
-//     } else {
-//       next();
-//     }
-//   });
-// });
 
 export default router;
