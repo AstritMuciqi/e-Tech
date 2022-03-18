@@ -3,14 +3,14 @@ const state = () => ({
 });
 
 const mutations = {
-  SET_LIST(state, list) {
+  SET_CATEGORY_LIST(state, list) {
     state.list = list;
   },
 };
 
 const actions = {
   fetchCategories({ commit }, list) {
-    commit("SET_LIST", list);
+    commit("SET_CATEGORY_LIST", list);
   },
 };
 
