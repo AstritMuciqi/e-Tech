@@ -3,11 +3,14 @@ import 'mutationobserver-shim'
 import Vue from "vue";
 import loading from 'vuejs-loading-screen'
 import './plugins/bootstrap-vue'
+import "bootstrap";
+import "bootstrap/dist/css/bootstrap.min.css";
 import App from "./App.vue";
 import router from "./router";
 import store from "./store";
 import "vuetify/dist/vuetify.min.css";
 import '@mdi/font/css/materialdesignicons.css';
+import 'material-design-icons-iconfont/dist/material-design-icons.css'
 import "./services/firebase";
 // import "./services/firebase";
 /* import the fontawesome core */

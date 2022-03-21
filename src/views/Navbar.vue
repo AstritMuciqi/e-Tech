@@ -7,11 +7,11 @@
             </a>
             <form style="align-items:center; margin-left:280px;" class="d-flex">
             <input style="width:400px" class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-            <button style="height:40px" class="btn btn-outline-warning" type="submit">Search</button>
+            <button style="height:40px" class="btn btn-outline-info" type="submit">Search</button>
             </form>
             <form style="align-items:center; margin-left:140px;" class="d-flex">
             <button style="height:40px;width:80px; " class="btn btn-outline-primary" type="submit"><fa :icon="['fas','user']"/></button>
-            <button style="height:40px;width:80px; margin-left:10px;" class="btn btn-outline-warning"  to="/admin"><fa :icon="['fas','cart-shopping']"/></button>
+            <CartHeader />
 
             </form>
 
@@ -21,8 +21,12 @@
 
 </template>
 <script>
+    import CartHeader from "./CartHeader.vue";
     export default {
         name: 'Navbar',
+        components:{
+            CartHeader
+        }
 }
     
 

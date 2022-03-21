@@ -25,6 +25,10 @@ const ProductSchema = new mongoose.Schema({
         type: Number,
         required : [true, "Please add a price"]
     },
+    quantity:{
+        type: Number,
+        required : [true, "Please add a quantity"]
+    },
     category: {
         type: String,
         required : [true, "Please select a category"],

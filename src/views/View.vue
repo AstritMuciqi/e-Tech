@@ -10,7 +10,7 @@
 			<span>Product Brand : </span> <br> <br>
 			<span>Product Category : </span> <br> <br>
 			<p>Description : </p> 
-			<button style="margin:210px 0 0 80px" class="btn btn-success" type="submit" value=""><v-icon>mdi-cart</v-icon> Add to Cart</button>
+			<button @click="addToCart()" style="margin:210px 0 0 80px" class="btn btn-success" type="submit" value=""><v-icon>mdi-cart</v-icon> Add to Cart</button>
 		</div>
 		<div class="value_section">
 			<h3>{{product.name}}</h3> 
@@ -65,8 +65,9 @@
 }
 .desc{
 	text-overflow: ellipsis;
-	max-width: 200px;
+	max-width: 350px;
 	min-height:104px;
+	text-align: justify;
 
 }
 
@@ -93,6 +94,12 @@ export default {
 			this.$isLoading(false)
 		});
     },
+	addToCart(){
+		this.$store.dispatch('addProductsToCart',{
+			product : this.product,
+			quantity: 1
+		});
+	}
   },
 };
 </script>

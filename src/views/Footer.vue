@@ -1,13 +1,13 @@
 <template>
-    <footer  class="footer-distributed">
+    <footer class="footer-distributed">
         <div style="height:100%;width:36%;" class="fotter-l">
             <router-link to="/"><img style="width:80px;height:80px;" v-bind:src="require('../assets/icon3.jpg')" /></router-link>
             <br>
             <p class="footer-links">
                 <router-link to="/">Home</router-link> <br>
             </p>
-            <p v-for="result in results" :key="result" class="footer-links">
-                <a >{{result.name}}</a>
+            <p v-for="category in categoryList" :key="category._id" class="footer-links">
+                <a >{{category.name}}</a>
             </p>
             <p class="footer-links">
             <router-link to="./admin/products"><fa :icon="['fas','dashboard']"/>  Admin Panel</router-link> 
@@ -61,18 +61,15 @@ export default{
      },
     methods: {
         async fetchCategories(){
-                const result = await apiRequest.getCategoryList();
-                this.$store.dispatch("fetchCategories", result);
-                this.results = result;
-                
+            const result = await apiRequest.getCategoryList();
+            this.$store.dispatch("fetchCategories", result);                
         },
     },
-    data(){
-        return {
-            results:{}
-        }
-    }
-
+    computed: {
+      ...mapGetters({
+        categoryList: "categoryList"
+      }),
+  }
 }
 </script>
 
@@ -135,9 +132,6 @@ body > footer > div.fotter-l {
         font-size: 14px;
         font-weight: normal;
         margin: 0;
-    }
-    .footer-distributed .footer-center {
-        /* width: 35%; */
     }
         .footer-distributed .footer-center i {
             background-color: #33383b;

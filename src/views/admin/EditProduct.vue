@@ -9,6 +9,7 @@
             <v-text-field  label="Product Name" prepend-icon="mdi-note" v-model="form.name" :rules="rules"></v-text-field>
             <v-text-field  label="Product Model" prepend-icon="mdi-note" v-model="form.model" :rules="rules"></v-text-field>
             <v-text-field  label="Product Price" prepend-icon="mdi-note" v-model="form.price" :rules="rules"></v-text-field>
+            <v-text-field  label="Product Quantity" prepend-icon="mdi-note" v-model="form.quantity" :rules="rules"></v-text-field>
             <v-col
               class="d-flex"
               cols="12"
@@ -50,6 +51,7 @@ export default {
         model: "",
         description: "",
         price: 0,
+        quantity: 0,
         category: "",
         brand:"",
         photo: "",
