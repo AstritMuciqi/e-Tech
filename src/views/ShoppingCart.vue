@@ -1,6 +1,11 @@
 <template>
   <v-main>
-    <v-btn style="margin: 10px 910px 10px 0;padding:20px ;font-size:20px; background-color:black;color:white;text-decoration:none;"  to="/cart">Shopping Cart</v-btn>
+    <div v-if="cart.length === 0">
+      <p style="text-align:center;font-size:20px;color:gray; padding:100px">Cart Is Empty! <br> <br> <router-link  class="btn btn-outline-info"  to="/">Go To Products</router-link>
+</p>
+    </div>
+    <div v-else>
+      <v-btn style="margin: 10px 910px 10px 0;padding:20px ;font-size:20px; background-color:black;color:white;text-decoration:none;"  to="/cart">Shopping Cart</v-btn>
     <v-data-table
     style="width:1144px !important;margin-left:60px !important;"
     :headers="headers"
@@ -30,6 +35,9 @@
               <v-btn style="margin: 10px 60px 10px 0; font-size:20px; background-color:green;color:white;text-decoration:none;padding:25px;"  to="/checkout">Checkout(Total: ${{ cartTotalPrice }}) <v-icon style="margin-left:5px" color="white" large>mdi-arrow-right-drop-circle</v-icon></v-btn>
           </p>
           
+
+    </div>
+    
   </v-main>
 </template>
 

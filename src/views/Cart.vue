@@ -4,7 +4,11 @@
     style="min-width:320px; right:0; left:auto"
     aria-labelledby="triggerId"
   >
-    <div v-for="item in cart" :key="item._id">
+    <div v-if="cart.length === 0">
+      <p style="text-align:center;font-size:20px;color:gray">Cart Is Empty!</p>
+    </div>
+    <div v-else>
+      <div v-for="item in cart" :key="item._id">
       <div class="px-2 d-flex justify-content-between">
         <div>
           <strong>{{ item.product.name }}</strong>
@@ -20,11 +24,15 @@
         </div>
       </div>
       <hr />
+      <div class="d-flex justify-content-between">
+        <router-link to="/cart" style="color:white;font-size:18px;margin:0 auto" class="btn btn-primary">Check Cart</router-link>
+      </div>
     </div>
+    
+    </div>
+    
 
-    <div class="d-flex justify-content-between">
-        <router-link to="/cart" style="color:white;font-size:12px;margin:0 auto" class="btn btn-primary">Check Cart</router-link>
-    </div>
+    
   </div>
 </template>
 
@@ -63,6 +71,7 @@ export default {
       this.$store.dispatch("getCartItems", result);
                 
     },
+    
 
     async removeProductFromCart(product){
       let import_button = document.getElementById(`${product._id}`);
