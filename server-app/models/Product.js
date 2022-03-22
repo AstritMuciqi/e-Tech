@@ -40,7 +40,11 @@ const ProductSchema = new mongoose.Schema({
     photo: {
         type: String,
         required : [true, "Please insert a photo"],
+    },
+    button: {
+        type: Boolean,
     }
+
 
 
 });

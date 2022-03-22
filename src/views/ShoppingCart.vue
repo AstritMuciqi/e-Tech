@@ -1,6 +1,6 @@
 <template>
   <v-main>
-    <v-btn style="margin: 10px 930px 10px 0; font-size:20px; background-color:black;color:white;text-decoration:none;"  to="/cart">Shopping Cart</v-btn>
+    <v-btn style="margin: 10px 910px 10px 0;padding:20px ;font-size:20px; background-color:black;color:white;text-decoration:none;"  to="/cart">Shopping Cart</v-btn>
     <v-data-table
     style="width:1144px !important;margin-left:60px !important;"
     :headers="headers"
@@ -13,22 +13,21 @@
             </div>
           </template>
           <template v-slot:[`item.quantity`]="{ item }">
-            <v-btn style="min-width:5px !important; font-size:20px; font-weight:bold;" @click="decrase(item)">-</v-btn><input style="width:10%; margin-left:20px"  type="number" :value="item.quantity" min="1" max="9"> <v-btn style="min-width:5px !important; font-size:20px; font-weight:bold;" @click="incrase(item)">+</v-btn>
+            <v-btn style="min-width:5px !important; font-size:20px; font-weight:bold;" @click="decrase(item)">-</v-btn><input style="width:15%; margin-left:20px"  type="number" :value="item.quantity" min="1" :max="item.product.quantity"> <v-btn style="min-width:5px !important; font-size:20px; font-weight:bold;" @click="incrase(item)">+</v-btn>
           </template>
           <template v-slot:[`item.actions`]="{ item }">
             <div style="white-space: nowrap;">
               <button  href="#"
             class="btn btn-danger"
-            @click.prevent="removeProductFromCart(item._id)" >Delete</button>
+            @click.prevent="removeProductFromCart(item)" >Delete</button>
             </div>
             
           </template>
           
           </v-data-table>
           <p style="display:flex; justify-content:space-between">
-              <router-link style="margin: 10px 0 10px 60px; font-size:20px; background-color:blue;color:white;text-decoration:none; width:19%"  to="/"><v-icon style="margin-left:5px" color="white" large>mdi-arrow-left-drop-circle</v-icon>Continue Shopping</router-link>
-              <v-btn style="margin: 10px 60px 10px 0; font-size:20px; background-color:green;color:white;text-decoration:none;"  to="/checkout">Checkout(Total: ${{ cartTotalPrice }}) <v-icon style="margin-left:5px" color="white" large>mdi-arrow-right-drop-circle</v-icon></v-btn>
-
+              <router-link style="margin: 10px 0 10px 60px; font-size:20px; background-color:blue;color:white;text-decoration:none; width:19%;padding:10px;"  to="/"><v-icon style="margin-left:5px" color="white" large>mdi-arrow-left-drop-circle</v-icon>Continue Shopping</router-link>
+              <v-btn style="margin: 10px 60px 10px 0; font-size:20px; background-color:green;color:white;text-decoration:none;padding:25px;"  to="/checkout">Checkout(Total: ${{ cartTotalPrice }}) <v-icon style="margin-left:5px" color="white" large>mdi-arrow-right-drop-circle</v-icon></v-btn>
           </p>
           
   </v-main>
@@ -104,8 +103,11 @@ import axios from 'axios';
                 
     },
 
-    async removeProductFromCart(product){
-      this.$store.dispatch("removeProductFromCart", product);
+    async removeProductFromCart(cart){
+      cart.quantity = cart.quantity+cart.product.quantity;
+      cart.button = false;
+      axios.put(`http://localhost:5000/api/v1/products/${cart._id}`, cart);
+      this.$store.dispatch("removeProductFromCart", cart._id);
     },
       async clearCartItems(){
       const result = await apiRequest.deleteAll();
@@ -118,14 +120,22 @@ import axios from 'axios';
       }else{
           cart.quantity--;
           axios.put(`http://localhost:5000/api/v1/cart/${cart._id}`, cart);
+          cart.product.quantity++;
+          axios.put(`http://localhost:5000/api/v1/products/${cart._id}`, cart.product);
       }
 
 
       
     },
     incrase(cart){
+      if(cart.product.quantity===0){
+        alert("You achive the maximum stock availiable");
+      }else{
       cart.quantity++;
       axios.put(`http://localhost:5000/api/v1/cart/${cart._id}`, cart);
+      cart.product.quantity--;
+      axios.put(`http://localhost:5000/api/v1/products/${cart._id}`, cart.product);
+      }
 
     }
 

@@ -4,7 +4,10 @@
             <Navbar />
       </div> 
       <router-view></router-view>
+      <div v-if="!$route.meta.component">
     <Footer />
+          </div> 
+
   </v-app>
 </template>
 

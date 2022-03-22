@@ -11,6 +11,9 @@ const CartSchema = new mongoose.Schema({
         type: mongoose.Schema.ObjectId,
         ref:"Product"
 
+    },
+    button: {
+        type: Boolean,
     }
 });
 

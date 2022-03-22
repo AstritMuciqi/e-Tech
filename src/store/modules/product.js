@@ -15,7 +15,7 @@ const mutations = {
     });
 
     if (productInCart){
-      productInCart.quantity += quantity;
+      alert("The product is already added to the cart!");
       return;
     }
 

@@ -14,7 +14,7 @@
             </div>
             <div class="card-footer ">
                   <p class="card-text" style="display:flex;">
-                    <button @click="addToCart()" style="width:70%;font-size:11px;" class="btn btn-dark text-light">
+                    <button :id="product._id" :disabled="product.button"  @click="addToCart(product)" style="width:70%;font-size:11px;" class="btn btn-dark text-light">
                         <i class="bi bi-cart-plus "></i> Add to Cart (Price {{product.price}})
                     </button>
                     <a v-bind:href="`view/${product._id}`" style="width:40%; font-size:10px;" class="btn btn-outline-dark float-right ">
@@ -36,19 +36,27 @@
 
 
 <script>
+import axios from 'axios';
 import { mapActions } from "vuex";
 export default {
   name:"ProductCard",
   props: ["product"],
   methods:{
     ...mapActions(["addProductsToCart"]),
-    addToCart() {
+    addToCart(product) {
+      let import_button = document.getElementById(`${product._id}`);
+      product.quantity--;
+      product.button = true;
+      axios.put(`http://localhost:5000/api/v1/products/${product._id}`, product)
+      .then(() => import_button.disabled = true);
        this.addProductsToCart({
         product: this.product,
         quantity: 1,
         _id : this.product._id
       })
-    }
+      
+    },
+    
   }
   
 };

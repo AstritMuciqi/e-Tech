@@ -15,7 +15,7 @@
           <button
             href="#"
             class="badge badge-secondary"
-            @click.prevent="removeProductFromCart(item._id)"
+            @click.prevent="removeProductFromCart(item)"
           >remove</button>
         </div>
       </div>
@@ -23,10 +23,7 @@
     </div>
 
     <div class="d-flex justify-content-between">
-        <router-link to="/cart" style="color:white;font-size:12px;margin:0 0 10px 10px" class="btn btn-primary">Cart Details</router-link>
-        <a style="color:white;font-size:12px;margin-bottom:10px" @click.prevent="clearCartItems()" class="btn btn-danger">Clear Cart</a>
-
-
+        <router-link to="/cart" style="color:white;font-size:12px;margin:0 auto" class="btn btn-primary">Check Cart</router-link>
     </div>
   </div>
 </template>
@@ -34,6 +31,7 @@
 
 <script>
 import apiRequest from "../utility/apiRequest";
+import axios from 'axios';
 export default {
   computed: {
     // Example 1: mapState ( It will only work if module is namespaced )
@@ -67,7 +65,12 @@ export default {
     },
 
     async removeProductFromCart(product){
-      this.$store.dispatch("removeProductFromCart", product);
+      let import_button = document.getElementById(`${product._id}`);
+      product.product.quantity+=product.quantity;
+      product.button=false;
+      axios.put(`http://localhost:5000/api/v1/products/${product._id}`, product)
+      .then(() => import_button.disabled = false);
+      this.$store.dispatch("removeProductFromCart", product._id);
     },
       async clearCartItems(){
       const result = await apiRequest.deleteAll();
