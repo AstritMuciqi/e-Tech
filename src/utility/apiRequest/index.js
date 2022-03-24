@@ -9,6 +9,11 @@ import getAll from "./cart/getAll";
 import store from "./cart/store";
 import deleteAll from "./cart/deleteAll";
 import deleteItem from "./cart/delete";
+import getOrder from "./order/getOrder";
+import getOrdersList from "./order/getOrdersList";
+import createOrder from "./order/createOrder";
+import editOrder from "./order/editOrder";
+import removeOrder from "./order/removeOrder";
 
 
 
@@ -23,5 +28,10 @@ export default {
   deleteAll,
   deleteItem,
   store,
-  getAll
+  getAll,
+  getOrder,
+  getOrdersList,
+  createOrder,
+  editOrder,
+  removeOrder
 };

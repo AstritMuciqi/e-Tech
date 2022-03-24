@@ -61,6 +61,21 @@ const routes = [
     name: "View",
     component: () => import(/* webpackChunkName: "view" */ "../views/View.vue"),
   },
+  {
+    path: "/checkout",
+    name: "Checkout",
+    component: () => import(/* webpackChunkName: "view" */ "../views/Checkout.vue"),
+  },
+  {
+    path: "/complete",
+    name: "CompletedOrder",
+    component: () => import(/* webpackChunkName: "view" */ "../views/CompletedOrder.vue"),
+  },
+  {
+    path: "/orderdetails/:id",
+    name: "OrderDetails",
+    component: () => import(/* webpackChunkName: "view" */ "../views/OrderDetails.vue"),
+  },
   // {
   //   path: "/about",
   //   name: "About",

@@ -10,6 +10,7 @@
             <v-text-field  label="Product Model" prepend-icon="mdi-note" v-model="form.model" :rules="rules"></v-text-field>
             <v-text-field  label="Product Price" prepend-icon="mdi-note" v-model="form.price" :rules="rules"></v-text-field>
             <v-text-field  label="Product Quantity" prepend-icon="mdi-note" v-model="form.quantity" :rules="rules"></v-text-field>
+            <v-text-field  label="Product Button" prepend-icon="mdi-note" v-model="form.button" ></v-text-field>
             <v-col
               class="d-flex"
               cols="12"
@@ -29,7 +30,11 @@
             <v-file-input @change="selectFile"  show-size counter multiple label="Select Image"  ></v-file-input>
             <!-- <v-btn color="red" text @click="removeProduct(form._id)">Delete</v-btn> -->
             <v-img :src="require(`../../assets/${form.photo}`)" width="120" height="120"></v-img>
-            <v-btn type="submit" style="margin-right:800px" color="success">Edit Product</v-btn>
+            <p style="display:flex; justify-content:space-between">
+              <v-btn style="margin-left:20px" type="submit" color="success" class="mt-3">Edit Product</v-btn>
+              <router-link style="margin-right:295px;color:white" to="/admin/products" class="mt-3 btn btn-secondary">Go Back</router-link>
+            </p>
+            
           </v-form>
         </v-card>
       </v-col>
@@ -52,6 +57,7 @@ export default {
         description: "",
         price: 0,
         quantity: 0,
+        button: false,
         category: "",
         brand:"",
         photo: "",

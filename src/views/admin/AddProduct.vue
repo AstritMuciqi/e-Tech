@@ -10,6 +10,9 @@
             <v-text-field  label="Product Model" prepend-icon="mdi-note" v-model="form.model" :rules="rules"></v-text-field>
             <v-text-field  label="Product Price" prepend-icon="mdi-note" v-model="form.price" :rules="rules"></v-text-field>
             <v-text-field  label="Product Quantity" prepend-icon="mdi-note" v-model="form.quantity" :rules="rules"></v-text-field>
+            <v-main hidden="hidden">
+              <v-text-field  label="Product Button" prepend-icon="mdi-note" v-model="form.button"></v-text-field>
+            </v-main>
             <v-col
               class="d-flex"
               cols="12"
@@ -27,7 +30,10 @@
             <v-text-field  label="Product Brand" prepend-icon="mdi-note" v-model="form.brand" :rules="rules"></v-text-field>
             <v-textarea  label="Product Description" prepend-icon="mdi-note-plus" v-model="form.description" :rules="rules"></v-textarea>
             <v-file-input @change="selectFile"  :rules="rules" show-size counter multiple label="Select Image"  ></v-file-input>
-            <v-btn type="submit" class="mt-3" color="primary">Add Product</v-btn>
+            <p style="display:flex; justify-content:space-between">
+              <v-btn style="margin-left:25px" type="submit" class="mt-3" color="primary">Add Product</v-btn> 
+              <router-link style="margin-right:295px;color:white" to="/admin/products" class="mt-3 btn btn-secondary">Go Back</router-link>
+            </p>
           </v-form>
         </v-card>
       </v-col>
@@ -51,6 +57,7 @@ export default {
         description: "",
         price: 0,
         quantity: 0,
+        button: false,
         category: "",
         brand:"",
         photo: "",

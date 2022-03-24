@@ -21,6 +21,7 @@ connectDB();
 const products = require('./routes/products');
 const categories = require('./routes/categories');
 const cart = require('./routes/cart');
+const orders = require('./routes/orders');
 const getAuthToken = require("./middleware/getAuthToken");
 const checkIfAuthenticated = require("./middleware/checkIfAuthenticated");
 
@@ -51,6 +52,8 @@ if(process.env.NODE_ENV === 'development'){
 app.use('/api/v1/products/', products);
 app.use('/api/v1/categories', categories);
 app.use('/api/v1/cart', cart);
+app.use('/api/v1/orders', orders);
+
 
 
 //users router

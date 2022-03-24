@@ -24,11 +24,11 @@
         </div>
       </div>
       <hr />
-      <div class="d-flex justify-content-between">
-        <router-link to="/cart" style="color:white;font-size:18px;margin:0 auto" class="btn btn-primary">Check Cart</router-link>
-      </div>
+      
     </div>
-    
+      <div class="d-flex justify-content-between">
+        <router-link to="/cart" style="color:white;font-size:15px;margin:0 auto" class="btn btn-primary">Check Cart</router-link>
+      </div>
     </div>
     
 
@@ -73,13 +73,13 @@ export default {
     },
     
 
-    async removeProductFromCart(product){
-      let import_button = document.getElementById(`${product._id}`);
-      product.product.quantity+=product.quantity;
-      product.button=false;
-      axios.put(`http://localhost:5000/api/v1/products/${product._id}`, product)
+    async removeProductFromCart(cart){
+      let import_button = document.getElementById(`${cart._id}`);
+      cart.quantity = cart.quantity+cart.product.quantity;
+      cart.product.button=false;
+      axios.put(`http://localhost:5000/api/v1/products/${cart._id}`, cart.product)
       .then(() => import_button.disabled = false);
-      this.$store.dispatch("removeProductFromCart", product._id);
+      this.$store.dispatch("removeProductFromCart", cart._id);
     },
       async clearCartItems(){
       const result = await apiRequest.deleteAll();

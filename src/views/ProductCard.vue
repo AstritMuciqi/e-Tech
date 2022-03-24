@@ -15,7 +15,7 @@
             <div class="card-footer ">
                   <p class="card-text" style="display:flex;">
                     <button :id="product._id" :disabled="product.button"  @click="addToCart(product)" style="width:70%;font-size:11px;" class="btn btn-dark text-light">
-                        <i class="bi bi-cart-plus "></i> Add to Cart (Price {{product.price}})
+                        <i class="bi bi-cart-plus "></i> Add to Cart (Price {{product.price}}Є | Stock({{product.quantity}}))
                     </button>
                     <a v-bind:href="`view/${product._id}`" style="width:40%; font-size:10px;" class="btn btn-outline-dark float-right ">
                         <i class="bi bi-eye-fill "></i> Show Details
