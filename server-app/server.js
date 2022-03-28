@@ -24,6 +24,7 @@ const cart = require('./routes/cart');
 const orders = require('./routes/orders');
 const getAuthToken = require("./middleware/getAuthToken");
 const checkIfAuthenticated = require("./middleware/checkIfAuthenticated");
+const brands = require('./routes/brands');
 
 const app = express();
 
@@ -53,6 +54,7 @@ app.use('/api/v1/products/', products);
 app.use('/api/v1/categories', categories);
 app.use('/api/v1/cart', cart);
 app.use('/api/v1/orders', orders);
+app.use('/api/v1/brands', brands);
 
 
 
