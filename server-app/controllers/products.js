@@ -7,7 +7,7 @@ const Product = require("../models/Product");
 // @access Public
 exports.getProducts = asyncHandler(async (req, res, next) => {
   const products = await Product.find();
-  res.setTimeout(2000, function(){
+  res.setTimeout(1000, function(){
         res.status(200);
         res.json({ success: true, count: products.length, data: products }).time;
     });
@@ -24,7 +24,7 @@ exports.getProduct = asyncHandler(async (req, res, next) => {
         new ErrorResponse(`Product not found with id of ${req.params.id}`, 404)
       );
     }
-    res.setTimeout(1000, function(){
+    res.setTimeout(500, function(){
       res.status(200);
       res.json({
         success: true,
@@ -40,7 +40,7 @@ exports.getProduct = asyncHandler(async (req, res, next) => {
 
 exports.createProduct = asyncHandler(async (req, res, next) => {
     const product = await Product.create(req.body);
-    res.setTimeout(1000, function(){
+    res.setTimeout(500, function(){
       res.status(201);
       res.json({
         success: true,
@@ -63,7 +63,7 @@ exports.updateProduct = asyncHandler(async (req, res, next) => {
         new ErrorResponse(`Product not found with id of ${req.params.id}`, 404)
       );
     }
-    res.setTimeout(1000, function(){
+    res.setTimeout(500, function(){
       res.status(200);
       res.json({
         success: true,
@@ -83,7 +83,7 @@ exports.deleteProduct = asyncHandler(async (req, res, next) => {
         new ErrorResponse(`Product not found with id of ${req.params.id}`, 404)
       );
     }
-    res.setTimeout(1000, function(){
+    res.setTimeout(500, function(){
       res.status(200);
       res.json({
         success: true,

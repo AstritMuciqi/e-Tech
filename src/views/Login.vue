@@ -40,7 +40,7 @@ import {getAuth, signInWithEmailAndPassword} from 'firebase/auth';
              } catch (err) {
                  this.error = err 
              }
-             this.$router.replace({name: 'Listing'})
+             this.$router.replace({name: 'Home'})
          }
      }
  };

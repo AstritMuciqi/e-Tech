@@ -17,6 +17,24 @@ const routes = [
       import(/* webpackChunkName: "about" */ "../views/About.vue")
   },
   {
+    path: "/useability",
+    name: "Useability",
+    component: () =>
+      import(/* webpackChunkName: "about" */ "../views/Useability.vue")
+  },
+  {
+    path: "/notfound",
+    name: "ErrorPage",
+    component: () =>
+      import(/* webpackChunkName: "about" */ "../views/ErrorPage.vue")
+  },
+  {
+    path: "/contact",
+    name: "ContactForm",
+    component: () =>
+      import(/* webpackChunkName: "about" */ "../views/ContactForm.vue")
+  },
+  {
     path: "/listing",
     name: "Listing",
 
@@ -107,6 +125,26 @@ const routes = [
         }
       },
       {
+        path: "/admin/contacts",
+        name: "Contacts",
+        component: () =>
+          import(
+            /* webpackChunkName: "create" */ "../views/admin/Contacts.vue"
+          ),
+        meta: {
+          component: true
+        }
+      },
+      {
+        path: "/admin/orders",
+        name: "Orders",
+        component: () =>
+          import(/* webpackChunkName: "create" */ "../views/admin/Orders.vue"),
+        meta: {
+          component: true
+        }
+      },
+      {
         path: "/admin/addProduct",
         name: "AddProduct",
 
@@ -180,6 +218,13 @@ const routes = [
     meta: {
       component: true
     }
+  },
+  {
+    path: "*",
+    name: "ErrorPage",
+
+    component: () =>
+      import(/* webpackChunkName: "create" */ "../views/ErrorPage.vue")
   }
 ];
 

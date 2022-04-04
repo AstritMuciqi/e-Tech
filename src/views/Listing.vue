@@ -9,17 +9,23 @@
     </v-alert>
      <div style="display:flex; justify-content:center;">
       <span class="h6-hover" style="border-left:1px solid gray;border-right:1px solid gray;" v-for="category in categoryList" :key="category.id">
-        <router-link style="font-size:14px;margin:20px;text-decoration:none;color:black;font-weight:bold" to="/admin/products">{{category.name}}</router-link>
+        <v-btn style="font-size:14px;margin:20px;text-decoration:none;color:black;font-weight:bold" @click.prevent="selectByCategory(category.name)">{{category.name}}</v-btn>
       </span>
     </div>
+    
     <hr style="border-top: 1px solid gray; margin-top: 0px; ">
-    <div >
         <div style="display:flex;flex-wrap:wrap;width:1200px;margin-left:40px;" class="card-deck">
-            <div style="flex:1 0 24.333333%;" class="card" v-for="product in productList" :key="product._id">
+
+            <div v-show="isDiv" class="card" style="flex:0 0 22.333333%;display:flex; flex-direction:column;padding:10px 80px 10px 50px ">
+              <span style="font:weight:bold;font-size:20px;margin-left:-80px"  >Filter By Brand :</span>
+      <span v-for="brand in brandList" :key="brand.id">
+        <v-btn style="font-size:14px;margin:20px;text-decoration:none;color:black;font-weight:bold" @click.prevent="selectByBrand(brand.name)">{{brand.name}}</v-btn>
+      </span>
+    </div>
+            <div style="flex:0 0 22.333333%;" class="card" v-for="product in productList" :key="product._id">
             <ProductCard  :product="product" />  
             </div>         
         </div>
-    </div>  
   </section>
 </template>
 
@@ -42,16 +48,24 @@ export default {
     ProductCard,
     
   },
+  data(){
+    return{
+      isDiv: false,
+    }
+  },
   created() {
     this.fetchCategories();
+    this.fetchBrands();
     this.fetchProducts();
   },
   methods: {
     async fetchProducts() {
-      
+      let div = document.getElementById("brandFilter");
       this.$isLoading(true) // show the loading screen
       const result = await apiRequest.getProductList();
-      this.$store.dispatch("fetchProducts", result).finally(()=>{
+      this.$store.dispatch("fetchProducts", result).then(()=>{
+        this.isDiv=false;
+      }).finally(()=>{
               this.$isLoading(false)
       });
     },
@@ -60,6 +74,35 @@ export default {
       this.$store.dispatch("fetchCategories", result);
                 
     },
+    async fetchBrands(){
+      const result = await apiRequest.getBrandList();
+      this.$store.dispatch("fetchBrands", result);
+                
+    },
+    async selectByCategory(category){
+       const result = await apiRequest.getProductList();
+       const data = result.filter((item)=>{
+         return item.category === category;
+         
+       })
+      this.isDiv=true;
+      this.$store.dispatch("fetchProducts", data);
+      
+
+    },
+    async selectByBrand(brand){
+       const result = await apiRequest.getProductList();
+       const data = result.filter((item)=>{
+           return item.brand === brand;
+
+         
+       })
+      this.isDiv=true;
+      this.$store.dispatch("fetchProducts", data);
+      
+
+    },
+    
     
   },
   computed: {
@@ -71,6 +114,9 @@ export default {
       }),
       ...mapGetters({
         categoryList: "categoryList"
+      }),
+      ...mapGetters({
+        brandList: "brandList"
       }),
   }
 };

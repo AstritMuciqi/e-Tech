@@ -19,6 +19,12 @@ import getBrandList from "./brand/getBrandList";
 import getBrand from "./brand/getBrand";
 import removeBrand from "./brand/removeBrand";
 import editBrand from "./brand/editBrand";
+import getContact from "./contact/getContact";
+import getContactList from "./contact/getContactList";
+import createContact from "./contact/createContact";
+import editContact from "./contact/editContact";
+import removeContact from "./contact/removeContact";
+
 
 
 export default {
@@ -42,6 +48,11 @@ export default {
   getBrandList,
   getBrand,
   editBrand,
-  removeBrand
-
+  removeBrand,
+  getContact,
+  getContactList,
+  createContact,
+  editContact,
+  removeContact
+  
 };

@@ -121,18 +121,14 @@ import axios from 'axios';
       const result = await apiRequest.deleteAll();
       this.$store.dispatch("clearCartItems", result);
     },
-
     decrase(cart) {
       if(cart.quantity < 2){
         alert("Quantity values can't be negative");
       }else{
           cart.quantity--;
-          axios.put(`http://localhost:5000/api/v1/cart/${cart._id}`, cart);
           cart.product.quantity++;
-          axios.put(`http://localhost:5000/api/v1/products/${cart._id}`, cart.product);
+          axios.put(`http://localhost:5000/api/v1/cart/${cart._id}`, cart);
       }
-
-
       
     },
     incrase(cart){
@@ -143,7 +139,6 @@ import axios from 'axios';
       cart.product.quantity--;
       axios.put(`http://localhost:5000/api/v1/cart/${cart._id}`, cart);
       }
-
     }
 
 

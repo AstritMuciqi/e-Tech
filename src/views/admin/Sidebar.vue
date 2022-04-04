@@ -11,8 +11,14 @@
         <ul>
           <li> <v-icon color="white" large>mdi-alpha-p-box</v-icon><router-link style="font-size:18px; color:white" to="/admin/products"> Products <v-icon style="margin-left:70px" color="white" large>mdi-arrow-right-drop-circle</v-icon></router-link></li>
           <li> <v-icon color="white" large>mdi-alpha-b-box</v-icon><router-link style="font-size:18px; color:white" to="/admin/brands"> Brands <v-icon style="margin-left:83px" color="white" large>mdi-arrow-right-drop-circle</v-icon></router-link></li>
-          <li> <v-icon color="white" large>mdi-alpha-c-box</v-icon><router-link style="font-size:18px; color:white" to="/admin/categories"> Categories <v-icon style="margin-left:50px" color="white" large>mdi-arrow-right-drop-circle</v-icon></router-link></li>
-          <li> <v-icon color="white" large>mdi-account-multiple</v-icon><router-link style="font-size:18px; color:white" to="/admin/users"> Users <v-icon style="margin-left:90px" color="white" large>mdi-arrow-right-drop-circle</v-icon></router-link></li>
+          <li> <v-icon color="white" large>mdi-alpha-c-box</v-icon><router-link style="font-size:18px; color:white" to="/admin/categories"> Categories <v-icon style="margin-left:52px" color="white" large>mdi-arrow-right-drop-circle</v-icon></router-link></li>
+          <hr style="border:2px solid gray">
+          <li style="border:1px solid black"> <v-icon color="white" large>mdi-message</v-icon><router-link style="font-size:18px; color:white" to="/admin/contacts"> Contact Form <v-icon style="margin-left:28px" color="white" large>mdi-arrow-right-drop-circle</v-icon></router-link></li>
+          <hr style="border:2px solid gray">
+          <li style="border:1px solid black"> <v-icon color="white" large>mdi-account-multiple</v-icon><router-link style="font-size:18px; color:white" to="/admin/users"> Users <v-icon style="margin-left:90px" color="white" large>mdi-arrow-right-drop-circle</v-icon></router-link></li>
+          <hr style="border:2px solid gray">
+          <li style="border:1px solid black"> <v-icon color="white" large>mdi-alpha-o-circle</v-icon><router-link style="font-size:18px; color:white" to="/admin/orders"> Orders <v-icon style="margin-left:82px" color="white" large>mdi-arrow-right-drop-circle</v-icon></router-link></li>
+
         </ul>
       </nav>
   </div>

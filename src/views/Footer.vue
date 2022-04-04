@@ -10,7 +10,7 @@
                 <a >{{category.name}}</a>
             </p>
             <p class="footer-links">
-            <router-link to="./admin/products"><fa :icon="['fas','dashboard']"/>  Admin Panel</router-link> 
+            <router-link to="./admin/contacts"><fa :icon="['fas','dashboard']"/>  Admin Panel</router-link> 
             </p>
             <p class="footer-company-name">
                 Copyright © 2022 <strong>e Tech</strong>
@@ -19,17 +19,24 @@
         </div>
        
         <div class="footer-right">
-            <p class="footer-company-about">
+            <p class="footer-company-about" style="max-width:220px; text-align:justify">
                 <span>About the company</span>
-                <strong>e Tech</strong> is a Tech Shop company <br> where you can find
-                best technology products.
-            </p>
+                <strong>e Tech</strong> is a Tech Shop company where you can find
+                best technology products...<router-link style="font-weight:bold;color:blue" to="about">Read More</router-link>
+            </p> <br>
+                        <p class="footer-links" style="margin-left:0px">
+                            <router-link to="/useability">Kushtet e Perdorimit</router-link>
+                        </p>
+                        <p class="footer-links" style="margin-left:0px">
+                            <router-link to="/contact">Contact Form</router-link>
+                        </p>
             <div class="footer-icons">
                 <a v-bind:href="'https://www.facebook.com/'"><fa :icon="['fab','facebook']"/></a>
                 <a v-bind:href="'https://www.instagram.com/'" ><fa :icon="['fab','instagram']"/></a>
                 <a v-bind:href="'https://www.linkedin.com/?trk=guest_homepage-basic_nav-header-logo'"><fa :icon="['fab','linkedin']"/></a>
                 <a v-bind:href="'https://twitter.com/'" ><fa :icon="['fab','twitter']"/></a>
             </div>
+
         </div>
          <div  class="footer-center">
             <div>

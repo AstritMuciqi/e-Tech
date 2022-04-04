@@ -1,9 +1,9 @@
 <template>
-  <v-container style="width:800px !important">
+  <v-container style="width:1050px !important">
     <v-row no-gutters>
-      <v-col sm="10" class="mx-auto">
+      <v-col lg="12" class="mx-auto">
         <v-card class="pa-5">
-          <v-card-title>Order Details</v-card-title>
+          <v-card-title style="font-weight:bold">Order Details</v-card-title>
 
 
           <v-divider></v-divider>
@@ -17,14 +17,14 @@
                 </tr>
                                                 
                 <tr v-for="item in order.items" :key="item._id">
-                  <td><img width="50px" height="50px" :src="require(`../assets/${item.product.photo}`)" alt=""></td>
+                  <td><img style="background-color:gray" width="70px" height="70px" :src="require(`../assets/${item.product.photo}`)" alt=""></td>
                   <td style="text-align:start">{{item.product.name}} {{item.product.model}}</td>
-                  <td>{{item.product.price}}</td>
+                  <td>{{item.product.price}}Є</td>
                   <td>{{item.quantity}}</td>   
         
                 </tr>
                 <tr>
-                  <td style="font-weight:bold; font-size:19px" colspan="4">Total Price : {{cartTotalPrice}}</td>
+                  <td style="font-weight:bold; font-size:19px" colspan="4">Total Price : {{cartTotalPrice}}Є</td>
                 </tr>
                   
               </table>
@@ -78,7 +78,6 @@ export default {
     async getOrder() {
       this.order = await apiRequest.getOrder(this.$route.params.id);
     },
-
     async removeOrder(id){
       
         
@@ -88,15 +87,13 @@ export default {
     },
     async clearCartItems(){
       this.$store.state.products.cart.forEach((item)=>{
-        if(item.product.quantity!==0){
-          item.product.button = false;
-          apiRequest.editProduct(item._id, item.product);
-        }
+          item.button = false;
+          item.quantity = item.product.quantity;
+          apiRequest.editProduct(item._id, item);
       })
       const result = await apiRequest.deleteAll();
       this.$store.dispatch("clearCartItems", result);
       this.$router.push(`/complete`);
-
     },
   },
   computed:{

@@ -25,7 +25,20 @@
                 label="Select Category"></v-select>
 
             </v-col>
-            <v-text-field  label="Product Brand" prepend-icon="mdi-note" v-model="form.brand" :rules="rules"></v-text-field>
+            <v-col
+              class="d-flex"
+              cols="12"
+              sm="6"
+            >
+      <v-select :items="brandList" 
+      item-text="name" 
+      item-value="name"
+      v-model="form.brand"
+      single-line 
+      auto 
+      label="Select Brand"></v-select>
+
+            </v-col>
             <v-textarea  label="Product Description" prepend-icon="mdi-note-plus" v-model="form.description" :rules="rules"></v-textarea>
             <v-file-input @change="selectFile"  show-size counter multiple label="Select Image"  ></v-file-input>
             <!-- <v-btn color="red" text @click="removeProduct(form._id)">Delete</v-btn> -->
@@ -74,6 +87,7 @@ export default {
     });
     this.form = response;
     this.fetchCategories();
+    this.fetchBrands();
 
   },
   methods: {
@@ -84,6 +98,10 @@ export default {
     async fetchCategories(){
       const result = await apiRequest.getCategoryList();
       this.$store.dispatch("fetchCategories", result);
+    },
+    async fetchBrands(){
+      const result = await apiRequest.getBrandList();
+      this.$store.dispatch("fetchBrands", result);
     },
     selectFile(file){
       this.photo = file[0];
@@ -103,6 +121,9 @@ export default {
   computed: {
     ...mapGetters({
       categoryList: "categoryList",
+    }),
+    ...mapGetters({
+      brandList: "brandList",
     }),
   },
 };

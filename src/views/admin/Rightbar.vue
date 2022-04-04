@@ -25,9 +25,9 @@
           <v-list-item-icon>
             <v-icon>{{ item.icon }}</v-icon>
           </v-list-item-icon>
-
+          
           <v-list-item-content>
-            <v-list-item-title style="text-align: start; margin-left:25px;">{{ item.title }}</v-list-item-title>
+            <v-list-item-title style="text-align: start; margin-left:25px;"><router-link style="text-decoration:none;color:black" :to="item.link">{{ item.title }}</router-link> </v-list-item-title>
           </v-list-item-content>
         </v-list-item>
       </template>
@@ -42,9 +42,9 @@ export default {
   data(){
      return{
        items: [
-          { title: 'Home', icon: 'mdi-home-city' },
-          { title: 'My Account', icon: 'mdi-account' },
-          { title: 'Users', icon: 'mdi-account-group-outline' },
+          { title: 'Home', icon: 'mdi-home-city', link: '/' },
+          { title: 'My Account', icon: 'mdi-account', link: '/account' },
+          { title: 'Users', icon: 'mdi-account-group-outline', link: '/users' },
       ],              
     }     
   }

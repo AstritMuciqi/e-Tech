@@ -27,7 +27,20 @@
       label="Select Category"></v-select>
 
             </v-col>
-            <v-text-field  label="Product Brand" prepend-icon="mdi-note" v-model="form.brand" :rules="rules"></v-text-field>
+            <v-col
+              class="d-flex"
+              cols="12"
+              sm="6"
+            >
+      <v-select :items="brandList" 
+      item-text="name" 
+      item-value="name"
+      v-model="form.brand"
+      single-line 
+      auto 
+      label="Select Brand"></v-select>
+
+            </v-col>
             <v-textarea  label="Product Description" prepend-icon="mdi-note-plus" v-model="form.description" :rules="rules"></v-textarea>
             <v-file-input @change="selectFile"  :rules="rules" show-size counter multiple label="Select Image"  ></v-file-input>
             <p style="display:flex; justify-content:space-between">
@@ -47,6 +60,8 @@ import { mapGetters } from "vuex";
 export default {
   created() {
     this.fetchCategories();
+    this.fetchBrands();
+
   },
   data() {
     return {
@@ -89,6 +104,10 @@ export default {
       const result = await apiRequest.getCategoryList();
       this.$store.dispatch("fetchCategories", result);
     },
+    async fetchBrands(){
+      const result = await apiRequest.getBrandList();
+      this.$store.dispatch("fetchBrands", result);
+    },
     async submitForm(){
       this.form.photo = this.photo.name;
 
@@ -108,6 +127,9 @@ export default {
   computed: {
     ...mapGetters({
       categoryList: "categoryList",
+    }),
+    ...mapGetters({
+      brandList: "brandList",
     }),
   },
   

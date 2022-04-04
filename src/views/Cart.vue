@@ -37,7 +37,7 @@
 </template>
 
 
-<script>
+<script type="text/javascript">
 import apiRequest from "../utility/apiRequest";
 import axios from 'axios';
 export default {
@@ -75,11 +75,13 @@ export default {
 
     async removeProductFromCart(cart){
       let import_button = document.getElementById(`${cart._id}`);
+      let import_span = document.getElementById(`${cart.product.name}`);
       cart.quantity = cart.quantity+cart.product.quantity;
-      cart.product.button=false;
-      axios.put(`http://localhost:5000/api/v1/products/${cart._id}`, cart.product)
-      .then(() => import_button.disabled = false);
+      cart.button=false;
+      axios.put(`http://localhost:5000/api/v1/products/${cart._id}`, cart)
+      .then(() => import_button.disabled = false).then(() => import_span.textContent = `🛒 Add to Cart ( Price ${cart.product.price} Є  )`);
       this.$store.dispatch("removeProductFromCart", cart._id);
+
     },
       async clearCartItems(){
       const result = await apiRequest.deleteAll();
