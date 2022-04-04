@@ -14,7 +14,11 @@ import getOrdersList from "./order/getOrdersList";
 import createOrder from "./order/createOrder";
 import editOrder from "./order/editOrder";
 import removeOrder from "./order/removeOrder";
-
+import createBrand from "./brand/createBrand";
+import getBrandList from "./brand/getBrandList";
+import getBrand from "./brand/getBrand";
+import removeBrand from "./brand/removeBrand";
+import editBrand from "./brand/editBrand";
 
 
 export default {
@@ -33,5 +37,11 @@ export default {
   getOrdersList,
   createOrder,
   editOrder,
-  removeOrder
+  removeOrder,
+  createBrand,
+  getBrandList,
+  getBrand,
+  editBrand,
+  removeBrand
+
 };
