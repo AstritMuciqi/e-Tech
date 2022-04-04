@@ -1,5 +1,5 @@
 <template>
-    <v-toolbar dark style="height:20vh;color:white; background-color:black;">
+    <v-toolbar dark style="height:15vh;color:white; background-color:black;">
       <v-toolbar-title class="white--text">
         <div style="margin-top:30px">
           <router-link to="/"><img class="logo" v-bind:src="require('../../assets/icon.png')" width="100px" height="100px"></router-link>
