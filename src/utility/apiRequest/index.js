@@ -4,6 +4,10 @@ import createProduct from "./product/createProduct";
 import editProduct from "./product/editProduct";
 import removeProduct from "./product/removeProduct";
 import registerUser from "./user/registerUser";
+import getCategory from "./category/getCategory";
+import createCategory from "./category/createCategory";
+import editCategory from "./category/editCategory";
+import removeCategory from "./category/removeCategory";
 import getCategoryList from "./category/getCategoryList";
 import getAll from "./cart/getAll";
 import store from "./cart/store";
@@ -26,7 +30,6 @@ import editContact from "./contact/editContact";
 import removeContact from "./contact/removeContact";
 
 
-
 export default {
   getProductList,
   getProduct,
@@ -39,6 +42,10 @@ export default {
   deleteItem,
   store,
   getAll,
+  getCategory,
+  createCategory,
+  editCategory,
+  removeCategory,
   getOrder,
   getOrdersList,
   createOrder,

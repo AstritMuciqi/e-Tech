@@ -10,7 +10,8 @@
             <button style="height:40px" class="btn btn-outline-info" type="submit">Search</button>
             </form>
             <form style="align-items:center; margin-left:140px;" class="d-flex">
-            <button style="height:40px;width:80px; " class="btn btn-outline-primary" type="submit"><fa :icon="['fas','user']"/></button>
+                 <router-link to="/login"><button v-if="!user.loggedIn" style="height:40px;width:80px; " class="btn btn-outline-primary" type="submit">Login</button></router-link>
+            <button v-if="user.loggedIn" style="height:40px;width:80px;" class="btn btn-outline-danger" type="submit" @click="handleLogout">Logout</button>
             <CartHeader />
 
             </form>
@@ -22,11 +23,25 @@
 </template>
 <script>
     import CartHeader from "./CartHeader.vue";
+    import { getAuth, signOut } from '@firebase/auth'
+import { mapGetters } from 'vuex';
+
     export default {
         name: 'Navbar',
         components:{
             CartHeader
+        },
+         methods: {
+            handleLogout() {
+                signOut(getAuth());    
+            }
+        },
+        computed: {
+            ...mapGetters({
+                user: 'user',
+            })
         }
+        
 }
     
 

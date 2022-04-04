@@ -32,7 +32,8 @@
           </v-data-table>
           <p style="display:flex; justify-content:space-between">
               <router-link style="margin: 10px 0 10px 60px; font-size:20px; background-color:blue;color:white;text-decoration:none; width:19%;padding:10px;"  to="/"><v-icon style="margin-left:5px" color="white" large>mdi-arrow-left-drop-circle</v-icon>Continue Shopping</router-link>
-              <v-btn style="margin: 10px 60px 10px 0; font-size:20px; background-color:green;color:white;text-decoration:none;padding:25px;"  to="/checkout">Checkout(Total: ${{ cartTotalPrice }}) <v-icon style="margin-left:5px" color="white" large>mdi-arrow-right-drop-circle</v-icon></v-btn>
+              <router-link to="/login"><button v-if="!user.loggedIn" style="margin: 10px 60px 10px 0; " class="btn btn-outline-primary" type="submit">Login to checkout</button></router-link>
+              <v-btn v-if="user.loggedIn" style="margin: 10px 60px 10px 0; font-size:20px; background-color:green;color:white;text-decoration:none;padding:25px;"  to="/checkout">Checkout(Total: ${{ cartTotalPrice }}) <v-icon style="margin-left:5px" color="white" large>mdi-arrow-right-drop-circle</v-icon></v-btn>
           </p>
           
 
@@ -59,6 +60,7 @@
 <script>
 import apiRequest from "../utility/apiRequest";
 import axios from 'axios';
+import { mapGetters } from 'vuex';
   export default {
     
     data () {
@@ -92,6 +94,10 @@ import axios from 'axios';
     // ...mapGetters("product",["cartTotalPrice","cartList"])
 
     // Example 2: mapGetters
+    ...mapGetters({
+      user: 'user',
+    }),
+
     cart(){
       return this.$store.state.products.cart;
     },
@@ -121,14 +127,18 @@ import axios from 'axios';
       const result = await apiRequest.deleteAll();
       this.$store.dispatch("clearCartItems", result);
     },
+
     decrase(cart) {
       if(cart.quantity < 2){
         alert("Quantity values can't be negative");
       }else{
           cart.quantity--;
+          
           cart.product.quantity++;
           axios.put(`http://localhost:5000/api/v1/cart/${cart._id}`, cart);
       }
+
+
       
     },
     incrase(cart){
@@ -136,9 +146,11 @@ import axios from 'axios';
         alert("You achive the maximum stock availiable");
       }else{
       cart.quantity++;
+      
       cart.product.quantity--;
       axios.put(`http://localhost:5000/api/v1/cart/${cart._id}`, cart);
       }
+
     }
 
 

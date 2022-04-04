@@ -7,16 +7,28 @@
     <v-alert border="left" close-text="Close Alert" color="green accent-4" dark dismissible v-if="this.$route.params.message">
       {{this.$route.params.message}}
     </v-alert>
-     <div style="display:flex; justify-content:center;">
-      <span class="h6-hover" style="border-left:1px solid gray;border-right:1px solid gray;" v-for="category in categoryList" :key="category.id">
-        <v-btn style="font-size:14px;margin:20px;text-decoration:none;color:black;font-weight:bold" @click.prevent="selectByCategory(category.name)">{{category.name}}</v-btn>
+     <div class="hover" style=" display:flex; justify-content:center; align-items: center; widht: 120px; height: 120px;">
+              <!-- <div class="subcategories-wrapper ">
+<ul class="subcategories clearfix">
+<li class="ty-subcategories__item bbox rounded-m__box">
+<input type="hidden" value="680">
+<a href="https://gjirafa50.com/gaming/konzola-retro/">
+<img data-src="https://hhstsyoejx.gjirafa.net/gj50/subcategories/233_680%20konzola%20retro.jpg" class="ty-subcategories-img lazyload" alt="Konzola retro" />
+<span>Konzola retro</span>
+</a>
+</li>
+</ul> -->
+<!-- </div> -->
+      <span class="h6-hover" style=" width: 180px; margin: 6px; box-shadow: 5px -6px 6px -4px; -webkit-box-shadow: 2px 2px 5px 0px rgba(0, 0, 0, 1);
+    -moz-box-shadow: 2px 2px 5px 0px rgba(0, 0, 0, 1); border-radius: 5%; " v-for="category in categoryList" :key="category.id">
+           <button class="hover" style=" display: flex; align-items: center; justify-content: center; font-size:14px;margin:20px;text-decoration:none;color:black;font-weight:bold" @click.prevent="selectByCategory(category.name)"><img width="45px" height="45px" :src="require(`../assets/${category.photo}`)" class="ty-subcategories-img lazyload" />
+{{category.name}}</button>
       </span>
     </div>
-    
     <hr style="border-top: 1px solid gray; margin-top: 0px; ">
+    <div >
         <div style="display:flex;flex-wrap:wrap;width:1200px;margin-left:40px;" class="card-deck">
-
-            <div v-show="isDiv" class="card" style="flex:0 0 22.333333%;display:flex; flex-direction:column;padding:10px 80px 10px 50px ">
+              <div v-show="isDiv" class="card" style="flex:0 0 22.333333%;display:flex; flex-direction:column;padding:10px 80px 10px 50px ">
               <span style="font:weight:bold;font-size:20px;margin-left:-80px"  >Filter By Brand :</span>
       <span v-for="brand in brandList" :key="brand.id">
         <v-btn style="font-size:14px;margin:20px;text-decoration:none;color:black;font-weight:bold" @click.prevent="selectByBrand(brand.name)">{{brand.name}}</v-btn>
@@ -26,16 +38,19 @@
             <ProductCard  :product="product" />  
             </div>         
         </div>
+    </div>  
   </section>
 </template>
 
 <style>
- .h6-hover{
-   padding: 40px;
- }
- .h6-hover:hover{
-   background-color: rgb(218, 218, 218);
- }
+.h6-hover {
+    padding: 0;
+    
+}
+.hover :hover{
+  background-color: white;
+}
+
 </style>
 
 
@@ -46,8 +61,7 @@ import ProductCard from "./ProductCard.vue";
 export default {
   components:{
     ProductCard,
-    
-  },
+    },
   data(){
     return{
       isDiv: false,
@@ -74,7 +88,7 @@ export default {
       this.$store.dispatch("fetchCategories", result);
                 
     },
-    async fetchBrands(){
+     async fetchBrands(){
       const result = await apiRequest.getBrandList();
       this.$store.dispatch("fetchBrands", result);
                 
@@ -103,7 +117,6 @@ export default {
 
     },
     
-    
   },
   computed: {
     ...mapGetters({
@@ -115,7 +128,7 @@ export default {
       ...mapGetters({
         categoryList: "categoryList"
       }),
-      ...mapGetters({
+        ...mapGetters({
         brandList: "brandList"
       }),
   }

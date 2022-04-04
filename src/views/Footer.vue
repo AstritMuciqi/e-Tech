@@ -9,7 +9,7 @@
             <p v-for="category in categoryList" :key="category._id" class="footer-links">
                 <a >{{category.name}}</a>
             </p>
-            <p class="footer-links">
+            <p v-show="this.$store.state.user.claims && this.$store.state.user.claims.admin" class="footer-links">
             <router-link to="./admin/contacts"><fa :icon="['fas','dashboard']"/>  Admin Panel</router-link> 
             </p>
             <p class="footer-company-name">
@@ -28,15 +28,14 @@
                             <router-link to="/useability">Kushtet e Perdorimit</router-link>
                         </p>
                         <p class="footer-links" style="margin-left:0px">
-                            <router-link to="/contact">Contact Form</router-link>
-                        </p>
+                            <router-link to="/contact">Contact Form</router-link>            
+                            </p>
             <div class="footer-icons">
                 <a v-bind:href="'https://www.facebook.com/'"><fa :icon="['fab','facebook']"/></a>
                 <a v-bind:href="'https://www.instagram.com/'" ><fa :icon="['fab','instagram']"/></a>
                 <a v-bind:href="'https://www.linkedin.com/?trk=guest_homepage-basic_nav-header-logo'"><fa :icon="['fab','linkedin']"/></a>
                 <a v-bind:href="'https://twitter.com/'" ><fa :icon="['fab','twitter']"/></a>
             </div>
-
         </div>
          <div  class="footer-center">
             <div>
@@ -74,7 +73,9 @@ export default{
     },
     computed: {
       ...mapGetters({
-        categoryList: "categoryList"
+        categoryList: "categoryList",
+        user: "user",
+        claims: "claims",
       }),
   }
 }
