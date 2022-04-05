@@ -25,6 +25,8 @@
             <h2>Login to e-Tech</h2>
             <br>
             <br>
+            <div style="color:red;text-align:justify;max-width:385px; font-size:11px" v-if="this.error">Error ocurred: {{this.error}}</div>
+            <br>
             <div class="inputs">
                 <div class="input">
                     <input class="form-control" type="email" placeholder="Email" v-model="form.email">
@@ -35,9 +37,8 @@
             </div>
             <p class="login-register">
                 Don't have an account?
-            <router-link class="router-link" :to="{name: 'Register'}">Register</router-link>
+            <router-link style="color:blue" class="router-link" :to="{name: 'Register'}">Register</router-link>
             </p>
-            <div v-if="this.error">Error ocurred: {{this.error}}</div>
             <button class="btn black" type="submit">Login</button>
         </form>
     </div>

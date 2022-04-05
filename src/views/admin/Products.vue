@@ -1,6 +1,6 @@
 <template>
   <v-main>
-    <v-btn style="margin: 10px 930px 10px 0; font-size:20px; background-color:green;color:white;text-decoration:none;"  to="addProduct">Add Product</v-btn>
+    <v-btn style="margin: 10px 940px 10px 0; font-size:20px; background-color:green;color:white;text-decoration:none;"  to="addProduct">Add Product</v-btn>
     <v-alert border="left" close-text="Close Alert" color="green accent-4" dark dismissible v-if="this.$route.params.message">
       {{this.$route.params.message}}
     </v-alert>

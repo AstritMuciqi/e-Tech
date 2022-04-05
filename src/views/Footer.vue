@@ -7,7 +7,7 @@
                 <router-link to="/">Home</router-link> <br>
             </p>
             <p v-for="category in categoryList" :key="category._id" class="footer-links">
-                <a >{{category.name}}</a>
+                <a href="#" >{{category.name}}</a>
             </p>
             <p v-show="this.$store.state.user.claims && this.$store.state.user.claims.admin" class="footer-links">
             <router-link to="./admin/contacts"><fa :icon="['fas','dashboard']"/>  Admin Panel</router-link> 

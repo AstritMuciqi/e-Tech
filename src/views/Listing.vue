@@ -21,17 +21,18 @@
 <!-- </div> -->
       <span class="h6-hover" style=" width: 180px; margin: 6px; box-shadow: 5px -6px 6px -4px; -webkit-box-shadow: 2px 2px 5px 0px rgba(0, 0, 0, 1);
     -moz-box-shadow: 2px 2px 5px 0px rgba(0, 0, 0, 1); border-radius: 5%; " v-for="category in categoryList" :key="category.id">
-           <button class="hover" style=" display: flex; align-items: center; justify-content: center; font-size:14px;margin:20px;text-decoration:none;color:black;font-weight:bold" @click.prevent="selectByCategory(category.name)"><img width="45px" height="45px" :src="require(`../assets/${category.photo}`)" class="ty-subcategories-img lazyload" />
+           <button class="hover" style="  display: inline-flex;align-items: center; justify-content: center; font-size:14px;margin:20px;text-decoration:none;color:black;font-weight:bold;" @click.prevent="selectByCategory(category.name)"><img width="45px" height="45px" :src="require(`../assets/${category.photo}`)" class="ty-subcategories-img lazyload" />
 {{category.name}}</button>
       </span>
     </div>
     <hr style="border-top: 1px solid gray; margin-top: 0px; ">
     <div >
         <div style="display:flex;flex-wrap:wrap;width:1200px;margin-left:40px;" class="card-deck">
-              <div v-show="isDiv" class="card" style="flex:0 0 22.333333%;display:flex; flex-direction:column;padding:10px 80px 10px 50px ">
-              <span style="font:weight:bold;font-size:20px;margin-left:-80px"  >Filter By Brand :</span>
+
+            <div v-show="isDiv" class="card" style="flex:0 0 22.333333% ;height:380px;display:flex; flex-direction:column;padding:10px 80px 10px 50px ">
+              <span style="font:weight:bold;font-size:20px;margin-left:-70px"  ><b>Filter By Brand :</b> </span>
       <span v-for="brand in brandList" :key="brand.id">
-        <v-btn style="font-size:14px;margin:20px;text-decoration:none;color:black;font-weight:bold" @click.prevent="selectByBrand(brand.name)">{{brand.name}}</v-btn>
+        <v-btn class="btn btn-outline-info" style="height:35px; width:130px;font-size:14px;margin:10px;text-decoration:none;color:black;font-weight:bold" @click.prevent="selectByBrand(brand.name)">{{brand.name}}</v-btn>
       </span>
     </div>
             <div style="flex:0 0 22.333333%;" class="card" v-for="product in productList" :key="product._id">
@@ -58,6 +59,7 @@
 import { mapGetters } from "vuex";
 import apiRequest from "../utility/apiRequest";
 import ProductCard from "./ProductCard.vue";
+import axios from 'axios';
 export default {
   components:{
     ProductCard,
@@ -65,12 +67,14 @@ export default {
   data(){
     return{
       isDiv: false,
+      category: "",
     }
   },
   created() {
     this.fetchCategories();
     this.fetchBrands();
     this.fetchProducts();
+
   },
   methods: {
     async fetchProducts() {
@@ -94,25 +98,20 @@ export default {
                 
     },
     async selectByCategory(category){
-       const result = await apiRequest.getProductList();
-       const data = result.filter((item)=>{
-         return item.category === category;
-         
-       })
+      const result = await (await axios.get(`http://localhost:5000/api/v1/products/?category=${category}`)).data;
+      const data = result.data;
       this.isDiv=true;
-      this.$store.dispatch("fetchProducts", data);
-      
+      this.category = category;
+      this.$store.dispatch("fetchProducts", data);      
 
     },
     async selectByBrand(brand){
-       const result = await apiRequest.getProductList();
-       const data = result.filter((item)=>{
+       const result = await (await axios.get(`http://localhost:5000/api/v1/products/?category=${this.category}`)).data;
+       const data = result.data.filter((item)=>{
            return item.brand === brand;
-
-         
        })
       this.isDiv=true;
-      this.$store.dispatch("fetchProducts", data);
+      this.$store.dispatch("fetchProducts", data).then;
       
 
     },

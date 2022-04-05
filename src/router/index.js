@@ -60,18 +60,14 @@ const routes = [
     name: "Register",
     component: () =>
       import(/* webpackChunkName: "register" */ "../views/Register.vue"),
-      meta: {
-        component: true,
-      },
+     
   },
   {
     path: "/login",
     name: "Login",
     component: () =>
       import(/* webpackChunkName: "login" */ "../views/Login.vue"),
-      meta: {
-        component: true,
-      },
+      
   },
   // {
   //   path: "/list-users",

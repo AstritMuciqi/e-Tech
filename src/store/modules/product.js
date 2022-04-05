@@ -42,12 +42,18 @@ const mutations = {
   SET_LIST(state, list) {
     state.list = list;
   },
+  SET_DATA_LIST(state, list) {
+    state.list = list;
+  },
 };
 
 const actions = {
 
   fetchProducts({ commit }, list) {
     commit("SET_LIST", list);
+  },
+  fetchData({ commit }, list) {
+    commit("SET_DATA_LIST", list);
   },
   addProductsToCart({ commit}, { product, quantity, _id }){
     commit('ADD_TO_CART', { product, quantity, _id });

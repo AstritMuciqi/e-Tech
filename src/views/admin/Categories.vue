@@ -12,7 +12,7 @@
     class="elevation-1"
   ><template v-slot:[`item.photo`]="{ item }">
             <div class="p-2">
-              <img v-bind:src="require(`../../assets/${item.photo}`)" height="100px">
+              <img v-bind:src="require(`../../assets/${item.photo}`)" height="100px" width="120px">
             </div>
           </template>
           <template v-slot:[`item.actions`]="{ item }">

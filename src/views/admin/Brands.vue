@@ -1,6 +1,6 @@
 <template>
   <v-main>
-    <v-btn style="margin: 10px 930px 10px 0; font-size:20px; background-color:green;color:white;text-decoration:none;"  to="./addBrand">Add Brand</v-btn>
+    <v-btn style="margin: 10px 975px 10px 0; font-size:20px; background-color:green;color:white;text-decoration:none;"  to="./addBrand">Add Brand</v-btn>
     <v-alert border="left" close-text="Close Alert" color="green accent-4" dark dismissible v-if="this.$route.params.message">
       {{this.$route.params.message}}
     </v-alert>
@@ -12,7 +12,7 @@
     class="elevation-1"
   ><template v-slot:[`item.photo`]="{ item }">
             <div class="p-2">
-              <img v-bind:src="require(`../../assets/${item.photo}`)" height="100px">
+              <img v-bind:src="require(`../../assets/${item.photo}`)" height="100px" width="120px">
             </div>
           </template>
           <template v-slot:[`item.actions`]="{ item }">

@@ -1,5 +1,5 @@
 <template>
-  <v-navigation-drawer style="position:fixed; margin-top:118px;background-color:black;  z-index: 1;"
+  <v-navigation-drawer style="position:fixed; margin-top:95px;background-color:black;  z-index: 1;"
         permanent
         expand-on-hover
   >

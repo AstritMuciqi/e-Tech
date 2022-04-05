@@ -6,7 +6,7 @@ const Product = require("../models/Product");
 // @route GET /api/v1/products
 // @access Public
 exports.getProducts = asyncHandler(async (req, res, next) => {
-  const products = await Product.find();
+  const products = await Product.find(req.query);
   res.setTimeout(1000, function(){
         res.status(200);
         res.json({ success: true, count: products.length, data: products }).time;

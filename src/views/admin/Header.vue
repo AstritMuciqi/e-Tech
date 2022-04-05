@@ -1,8 +1,8 @@
 <template>
-    <v-toolbar dark style="height:15vh;color:white; background-color:black;">
+    <v-toolbar dark style="height:16vh;color:white; background-color:black;">
       <v-toolbar-title class="white--text">
         <div style="margin-top:30px">
-          <router-link to="/"><img class="logo" v-bind:src="require('../../assets/icon.png')" width="100px" height="100px"></router-link>
+          <router-link to="/"><img class="logo" v-bind:src="require('../../assets/icon.png')" width="90px" height="90px"></router-link>
         </div>
       </v-toolbar-title>
 

@@ -31,8 +31,8 @@
           
           </v-data-table>
           <p style="display:flex; justify-content:space-between">
-              <router-link style="margin: 10px 0 10px 60px; font-size:20px; background-color:blue;color:white;text-decoration:none; width:19%;padding:10px;"  to="/"><v-icon style="margin-left:5px" color="white" large>mdi-arrow-left-drop-circle</v-icon>Continue Shopping</router-link>
-              <router-link to="/login"><button v-if="!user.loggedIn" style="margin: 10px 60px 10px 0; " class="btn btn-outline-primary" type="submit">Login to checkout</button></router-link>
+              <router-link style="margin: 10px 0 10px 60px; font-size:18px; background-color:blue;color:white;text-decoration:none; width:19%;padding:8px;"  to="/"><v-icon style="margin-left:5px" color="white" large>mdi-arrow-left-drop-circle</v-icon>Continue Shopping</router-link>
+              <router-link to="/login"><button v-if="!user.loggedIn" style="margin: 10px 60px 10px 0;font-size:22px " class="btn btn-outline-primary" type="submit">Login to checkout</button></router-link>
               <v-btn v-if="user.loggedIn" style="margin: 10px 60px 10px 0; font-size:20px; background-color:green;color:white;text-decoration:none;padding:25px;"  to="/checkout">Checkout(Total: ${{ cartTotalPrice }}) <v-icon style="margin-left:5px" color="white" large>mdi-arrow-right-drop-circle</v-icon></v-btn>
           </p>
           

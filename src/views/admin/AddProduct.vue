@@ -8,8 +8,8 @@
           <v-form ref="form" @submit.prevent="submitForm" class="pa-5" enctype="multipart/form-data">
             <v-text-field  label="Product Name" prepend-icon="mdi-note" v-model="form.name" :rules="rules"></v-text-field>
             <v-text-field  label="Product Model" prepend-icon="mdi-note" v-model="form.model" :rules="rules"></v-text-field>
-            <v-text-field  label="Product Price" prepend-icon="mdi-note" v-model="form.price" :rules="rules"></v-text-field>
-            <v-text-field  label="Product Quantity" prepend-icon="mdi-note" v-model="form.quantity" :rules="rules"></v-text-field>
+            <v-text-field  label="Product Price" prepend-icon="mdi-note" v-model="form.price" :rules="numRules"></v-text-field>
+            <v-text-field  label="Product Quantity" prepend-icon="mdi-note" v-model="form.quantity" :rules="numRules"></v-text-field>
             <v-main hidden="hidden">
               <v-text-field  label="Product Button" prepend-icon="mdi-note" v-model="form.button"></v-text-field>
             </v-main>
@@ -22,6 +22,7 @@
       item-text="name" 
       item-value="name"
       v-model="form.category"
+      :rules="numRules"
       single-line 
       auto 
       label="Select Category"></v-select>
@@ -36,6 +37,7 @@
       item-text="name" 
       item-value="name"
       v-model="form.brand"
+      :rules="numRules"
       single-line 
       auto 
       label="Select Brand"></v-select>
@@ -65,7 +67,9 @@ export default {
   },
   data() {
     return {
-      rules: [(value)=> !!value ||  "This field is required!"],
+      rules: [v => !!v || 'Required', v => /^.{4,}$/.test(v) || 'Invalid format, please type a minumum of 4 characters'],
+      numRules: [v => !!v || 'Required'],
+
       form: {
         name: "",
         model: "",
