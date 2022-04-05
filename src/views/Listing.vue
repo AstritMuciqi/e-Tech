@@ -32,7 +32,8 @@
             <div v-show="isDiv" class="card" style="flex:0 0 22.333333% ;height:380px;display:flex; flex-direction:column;padding:10px 80px 10px 50px ">
               <span style="font:weight:bold;font-size:20px;margin-left:-70px"  ><b>Filter By Brand :</b> </span>
       <span v-for="brand in brandList" :key="brand.id">
-        <v-btn class="btn btn-outline-info" style="height:35px; width:130px;font-size:14px;margin:10px;text-decoration:none;color:black;font-weight:bold" @click.prevent="selectByBrand(brand.name)">{{brand.name}}</v-btn>
+        <v-btn class="btn btn-outline-info" style="height:35px; width:130px;font-size:14px;margin:10px;box-shadow: 5px -6px 6px -4px; -webkit-box-shadow: 2px 2px 5px 0px rgba(0, 0, 0, 1);
+    -moz-box-shadow: 2px 2px 5px 0px rgba(0, 0, 0, 1); border-radius: 5%;text-decoration:none;color:black;font-weight:bold" @click.prevent="selectByBrand(brand.name)"><img width="20px" height="20px" :src="require(`../assets/${brand.photo}`)" class="ty-subcategories-img lazyload" />{{brand.name}}</v-btn>
       </span>
     </div>
             <div style="flex:0 0 22.333333%;" class="card" v-for="product in productList" :key="product._id">
