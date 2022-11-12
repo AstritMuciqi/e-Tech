@@ -122,7 +122,7 @@ export default {
         .finally(()=>{
               this.$isLoading(false)
       });
-        this.$router.push({ name : "Products", params : { message: response.message}});
+        this.$router.push({ name : "Products", params : { message: "Product Added Successfully!"}});
       }
       
     },

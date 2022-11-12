@@ -46,8 +46,12 @@ import { mapGetters } from "vuex";
 
     methods: {
       async fetchContacts() {
+                this.$isLoading(true);
+
         const result = await apiRequest.getContactList();
         this.$store.dispatch("fetchContacts", result);
+                this.$isLoading(false);
+
       },
       async deleteContact(id){
         const response = await apiRequest.removeContact(id);

@@ -6,7 +6,35 @@ const Product = require("../models/Product");
 // @route GET /api/v1/products
 // @access Public
 exports.getProducts = asyncHandler(async (req, res, next) => {
-  const products = await Product.find(req.query);
+  let query = {};
+if (req.query.category != null && req.query.category != ''){
+   query.$expr = {
+        "$regexMatch": {
+           "input": {"$toString": "$category"}, 
+           "regex": new RegExp(req.query.category)
+        }
+    }
+}
+if (req.query.brand != null && req.query.brand != ''){
+  query.$expr = {
+       "$regexMatch": {
+          "input": {"$toString": "$brand"}, 
+          "regex": new RegExp(req.query.brand)
+       }
+   }
+}
+if (req.query.name != null && req.query.name != ''){
+  query.$expr = {
+       "$regexMatch": {
+          "input": {"$toString": "$name"}, 
+          "regex": new RegExp(req.query.name)
+       }
+   }
+}
+const products = await Product.find(query);
+  // if (products) {
+  //   queryObject.position = { $regex: search, $options: 'i' }
+  // }
   res.setTimeout(1000, function(){
         res.status(200);
         res.json({ success: true, count: products.length, data: products }).time;

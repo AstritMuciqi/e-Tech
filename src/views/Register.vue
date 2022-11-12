@@ -23,7 +23,7 @@
             <h2>Register to e-Tech</h2>
             <br>
             <br>
-            <div style="color:red;text-align:justify;max-width:385px; font-size:11px" v-if="this.error">Error ocurred: {{this.error}}</div>
+            <div style="color:red;text-align:justify;max-width:385px; font-size:12px" v-if="this.error">Error ocurred: {{this.error}}</div>
             <br>
             <div class="inputs">
                 <div class="input">
@@ -62,7 +62,7 @@ export default {
                 await ApiRequest.registerUser(this.form.email, this.form.password)
             this.$router.replace({name: 'Login'});
             }catch(err) {
-                this.error = err.response.data.error;
+                this.error = err.response.data.error.details[0].message;
             }
             
         },

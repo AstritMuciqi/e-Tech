@@ -1,19 +1,18 @@
 <template>
-  <div>
+  <div style="position:fixed; z-index:1; margin-left:90px;">
     <nav class="navbar navbar-expand ">
       <div class="container">
 
         <div>
           <div class="dropdown open">
             <button
-              class="btn btn-outline-info"
-              style="width:70px;"
+              style="width:70px;border:none;"
               type="button"
               id="triggerId"
               data-toggle="dropdown"
               aria-haspopup="true"
               aria-expanded="false"
-            ><v-icon style="color:white">mdi-cart-variant</v-icon><span class="ty-minicart-title">{{cartItemCount}}</span> </button>
+            ><v-icon style="color:orange;">mdi-cart-variant</v-icon><span class="ty-minicart-title">{{cartItemCount}}</span> </button>
             <div @click="$event.stopPropagation()">
               <cart />
             </div>
@@ -27,7 +26,7 @@
 <style>
 .ty-minicart-title{
     position: absolute;
-    top: -4px;
+    top: -15px;
     right: -10px;
     display: block;
     min-width: 26px;

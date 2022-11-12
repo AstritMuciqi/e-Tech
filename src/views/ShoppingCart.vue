@@ -20,6 +20,9 @@
           <template v-slot:[`item.quantity`]="{ item }">
             <v-btn style="min-width:5px !important; font-size:20px; font-weight:bold;" @click="decrase(item)">-</v-btn><input style="width:15%; margin-left:20px"  type="number" :value="item.quantity" min="1" :max="item.product.quantity"> <v-btn style="min-width:5px !important; font-size:20px; font-weight:bold;" @click="incrase(item)">+</v-btn>
           </template>
+          <template v-slot:[`item.product.price`]="{ item }">
+            <span>{{item.quantity*item.product.price}}</span>
+          </template>
           <template v-slot:[`item.actions`]="{ item }">
             <div style="white-space: nowrap;">
               <button  href="#"
@@ -75,7 +78,7 @@ import { mapGetters } from 'vuex';
           { text: 'Product Name', value: 'product.name' },
           { text: 'Model', value: 'product.model' },
           { text: 'Quantity', value: 'quantity' },
-          { text: 'Price', value: 'product.price' },
+          { text: 'Price', value: 'product.price'},
           { text: 'Actions', value: 'actions'},
 
 

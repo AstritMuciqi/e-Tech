@@ -49,8 +49,13 @@ export default {
 
         console.log({...this.form});
         if(this.$refs.form.validate()){
-        const response = await apiRequest.createBrand({...this.form});
-        this.$router.push({ name : "Brands", params : { message: response.message}});
+                     this.$isLoading(false)
+
+        const response = await apiRequest.createBrand({...this.form}).finally(()=>{
+            this.$isLoading(true)
+        });
+        this.$router.push({ name : "Brands", params : { message: "Brand Added Successfully!"}});
+
       }
       
     },

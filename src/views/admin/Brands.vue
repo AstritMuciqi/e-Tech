@@ -1,7 +1,7 @@
 <template>
   <v-main>
     <v-btn style="margin: 10px 975px 10px 0; font-size:20px; background-color:green;color:white;text-decoration:none;"  to="./addBrand">Add Brand</v-btn>
-    <v-alert border="left" close-text="Close Alert" color="green accent-4" dark dismissible v-if="this.$route.params.message">
+    <v-alert style="margin-left:70%;position:fixed; margin-top:-50px; padding:10px" width="300px"  close-text="Close Alert" color="green accent-4" dark dismissible v-if="this.$route.params.message">
       {{this.$route.params.message}}
     </v-alert>
     <v-data-table
@@ -52,8 +52,12 @@ import { mapGetters } from "vuex";
 
     methods: {
       async fetchBrands() {
+                      this.$isLoading(true)
+
         const result = await apiRequest.getBrandList();
         this.$store.dispatch("fetchBrands", result);
+                      this.$isLoading(false)
+
       },
 
       async deleteBrand(id){

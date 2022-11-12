@@ -6,7 +6,7 @@
       </div>
     </transition-group>
     <a class="prev" @click="prev" href="#">&#10094; Previous</a>
-    <a class="next" @click="next" href="#">&#10095; Next</a>
+    <a class="next" @click="next" href="#">Next &#10095; </a>
   </div>
 </template>
 
@@ -36,7 +36,7 @@
 .prev, .next {
   cursor: pointer;
   position: absolute;
-  top: 15%;
+  top:11%;
   width: auto;
   padding: 16px;
   color: white;
@@ -66,10 +66,10 @@ export default {
   data() {
     return {
       images: [
-        "https://ae01.alicdn.com/kf/S5af06a21c26042e4ba0403e418d96305q.jpg_Q90.jpg_.webp",
-        "https://butonks.com/images/thumbnails/1280/393/promo/6/[RS]-Laptop-12th-Gen-e-tailor-web-banner-1920x590.jpg",
-        "https://hhstsyoejx.gjirafa.net/gj50/banners/small_rightsdasdasd-1644932979.jpg",
-        "https://ae01.alicdn.com/kf/Seafd8b2c39814f959ef5f5e7fe6a71c1D.jpg_Q90.jpg_.webp",
+        "https://www.bechtle.com/dam/jcr:4007edbd-35c7-4061-a6c9-9e3553eeddde/cw04_mainbanner_samsung-eu.jpg",
+        "https://www.mekhero.com/image-aplus/G1-I1416FV-mekhero-banner.jpg",
+        "https://hajaan.com/wp-content/uploads/2020/11/Keyboard-Common-Page-Main-Banner.png",
+        "https://about.att.com/ecms/dam/snr/2022/september2022/storylevelbanner/iconic_STORY_LEVEL_BANNER_1600x483.jpg",
       ],
       timer: null,
       currentIndex: 0

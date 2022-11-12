@@ -10,7 +10,7 @@
         <v-icon style="color:black;">mdi-arrow-collapse-left</v-icon>
         <v-list-item>
           <v-list-item-avatar>
-            <img src="https://randomuser.me/api/portraits/women/81.jpg">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRJlAFutru5z7bS9_kmLUz_CmfJynP5Ipcf_A&usqp=CAU">
           </v-list-item-avatar>
 
           <v-list-item-content>
@@ -27,7 +27,7 @@
           </v-list-item-icon>
 
           <v-list-item-content>
-            <v-list-item-title style="text-align: start; margin-left:25px;">{{ item.title }}</v-list-item-title>
+            <v-list-item-title style="text-align: start; margin-left:25px;"><router-link style="text-decoration:none; color:black" :to="item.link">{{ item.title }}</router-link> </v-list-item-title>
           </v-list-item-content>
         </v-list-item>
         <br>
@@ -52,9 +52,9 @@ export default {
   data(){
      return{
        items: [
-          { title: 'Home', icon: 'mdi-home-city' },
-          { title: 'My Account', icon: 'mdi-account' },
-          { title: 'Users', icon: 'mdi-account-group-outline' }
+          { title: 'Home', icon: 'mdi-home-city', link: "/" },
+          { title: 'My Account', icon: 'mdi-account',link: "/" },
+          { title: 'Users', icon: 'mdi-account-group-outline',link: "/" }
       ],              
     }     
   },

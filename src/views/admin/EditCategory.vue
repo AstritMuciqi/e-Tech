@@ -55,10 +55,14 @@ export default {
       this.photo = file[0];
     },
     async updateForm(){
+              this.$isLoading(true)
         this.form.photo = this.photo.name;
         if(this.$refs.form.validate()){
-        const response = await apiRequest.editCategory(this.$route.params.id,{...this.form});
-        this.$router.push({ name : "Categories", params : { message: response.message}});
+        const response = await apiRequest.editCategory(this.$route.params.id,{...this.form}).finally(()=>{
+              this.$isLoading(false)
+        });
+        this.$router.push({ name : "Categories", params : { message: "Category Edited Successfully!"}});
+        console.log(response);
       }
     }
   },

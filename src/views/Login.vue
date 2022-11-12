@@ -25,7 +25,7 @@
             <h2>Login to e-Tech</h2>
             <br>
             <br>
-            <div style="color:red;text-align:justify;max-width:385px; font-size:11px" v-if="this.error">Error ocurred: {{this.error}}</div>
+            <div style="color:red;text-align:justify;max-width:385px; font-size:13px" v-if="this.error">Error ocurred: {{this.error}}</div>
             <br>
             <div class="inputs">
                 <div class="input">
@@ -63,10 +63,24 @@ import {getAuth, signInWithEmailAndPassword} from 'firebase/auth';
              const auth = getAuth();
              try {
                  await signInWithEmailAndPassword(auth, this.form.email, this.form.password);
+                 this.$router.replace({name: 'Home'})
              } catch (err) {
-                 this.error = err.response.data.error;
+                if(err!=null){
+                   this.error = err.message;
+                   if(err.message === "Firebase: Error (auth/invalid-email)."){
+                       this.error = "Please type an valid email!"
+                   }
+                   if(err.message === "Firebase: Error (auth/user-not-found)."){
+                       this.error = "User not found!"
+                   }
+                   if(err.message === "Firebase: Error (auth/wrong-password)."){
+                       this.error = "Password is incorrect!"
+                   }
+                   if(err.message === "Firebase: Error (auth/internal-error)."){
+                       this.error = "Type a Password!"
+                   }
+                }
              }
-             this.$router.replace({name: 'Listing'})
          }
      }
  };

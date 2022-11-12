@@ -1,34 +1,62 @@
 <template>
-  <div class="container">
-    <div class="row">
-      <h1>contact us</h1>
-    </div>
-    <div class="row">
-      <h4 style="text-align: center; margin-left: 270px">
-        We'd love to hear from you!
-      </h4>
-    </div>
-    <form method="post" @submit.prevent="submitForm">
-      <div class="row input-container">
-        <div class="col-xs-12">
-          <div class="styled-input wide">
-            <input type="text" required v-model="form.email" />
-            <label>E-Mail</label>
+  <div>
+    <h2 style="color:black; font-weight:bold; padding:30px 0; text-align:center;">Contact Us</h2>
+  <div style="display: flex; padding:0 30px 15px 30px;">
+    <div class="container">
+        <h4 style="text-align:start; color:black;">
+          We'd love to hear from you!
+        </h4>
+      <form method="post" @submit.prevent="submitForm">
+        <div class="row input-container">
+          <div class="col-xs-12">
+            <div class="styled-input wide">
+              <input type="text" required v-model="form.email" />
+              <label>E-Mail</label>
+            </div>
           </div>
-        </div>
 
-        <div class="col-xs-12">
-          <div class="styled-input wide">
-            <textarea required v-model="form.message"></textarea>
-            <label>Message</label>
+          <div class="col-xs-12">
+            <div class="styled-input wide">
+              <textarea required v-model="form.message"></textarea>
+              <label>Message</label>
+            </div>
+          </div>
+          <div class="col-xs-12">
+            <button
+              class="btn btn-primary"
+              style="padding:10px 40px 10px 40px; color:white; border-radius:6px"
+              type="submit"
+            >
+              Send Message
+            </button>
           </div>
         </div>
-        <div class="col-xs-12">
-          <button class="btn btn-primary" style="padding:10px 40px 10px 40px; color:white; border-radius:6px" type="submit">Send Message</button>
-        </div>
+      </form>
+    </div>
+    <div style="margin-top:10px;" class="col-md-12">
+      <div style="display:flex; flex-direction:column;">
+        <span style="text-align: start; font-size:14px;">
+          <strong style="font-size:18px;">Address</strong> <br />
+          Rruga Ilaz Kodra <br />
+          Prishtinë, 10000 <br />
+          Kosovë. <br />
+          +383 43 12 31 23</span
+        >
+        <a class="a-tag" href="mailto:info@jobify.com" style="display:flex;"
+          >info@etech.com</a
+        ><br />
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1467.1872460565658!2d21.155913057996784!3d42.65341886746609!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x13549eee8d9c0cc9%3A0x3bb301d26583096e!2sIlaz%20Kodra%2C%20Prishtina%2010000!5e0!3m2!1sen!2sus!4v1657558599455!5m2!1sen!2sus"
+          style="border:none;"
+          width="43%"
+          height="249px"
+        ></iframe>
       </div>
-    </form>
+    </div>
   </div>
+
+  </div>
+  
 </template>
 
 <style>
@@ -170,8 +198,8 @@ export default {
     return {
       form: {
         email: "",
-        message: "",
-      },
+        message: ""
+      }
     };
   },
 
@@ -179,14 +207,12 @@ export default {
     async submitForm() {
       const response = await apiRequest.createContact({ ...this.form });
 
-
       this.$router.push({
         name: "Home",
-        params: { message: response.message },
+        params: { message: response.message }
       });
-                    alert("Message Send Successfully");
-
-    },
-  },
+      alert("Message Send Successfully");
+    }
+  }
 };
 </script>

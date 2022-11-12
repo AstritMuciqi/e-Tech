@@ -1,12 +1,29 @@
 <template>
   <section style="display: flex" v-if="this.product">
-    <div class="photo-main">
-      <img
+    <div style="display:flex;flex-direction:column;justify-content:space-bettween" class="photo-main">
+      <div>
+        <img
         :src="require(`../assets/${product.photo}`)"
         style="height: 400px"
         width="100%"
         alt="Card image cap"
       />
+      </div>
+      <div style="display:flex;margin:60px 10px 30px 10px;flex-direction:row;flex-wrap:wrap; justify-content:space-evenly;">
+        <div style="border:1px solid black; width:23%;height:80px">
+          <img src="" alt="IMAGE1">
+        </div>
+        <div style="border:1px solid black;width:23%;height:80px">
+          <img src="" alt="IMAGE2">
+        </div>
+        <div style="border:1px solid black;width:23%;height:80px">
+          <img src="" alt="IMAGE3">
+        </div>
+        <div style="border:1px solid black;width:23%;height:80px">
+          <img src="" alt="IMAGE4">
+        </div>
+      </div>
+      
     </div>
     <div class="text_section">
       <h3>Product Name :</h3>
@@ -46,8 +63,8 @@
         :id="product._id"
         :disabled="product.button"
         style="
-          width: 70%;
-          font-size: 16px;
+          width: 77%;
+          font-size: 17px;
           margin: 80px 0 0 0;
           margin: 90px 0 0 0;
         "

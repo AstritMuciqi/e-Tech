@@ -1,16 +1,12 @@
 <template>
     <footer class="footer-distributed">
         <div style="height:100%;width:36%;" class="fotter-l">
-            <router-link to="/"><img style="width:80px;height:80px;" v-bind:src="require('../assets/icon3.jpg')" /></router-link>
-            <br>
-            <p class="footer-links">
-                <router-link to="/">Home</router-link> <br>
-            </p>
+            <router-link style="text-decoration:none; margin-top:3%; display:flex;" to="/home" ><p style="font-family: Lucida Handwriting, cursive;color:red; margin-right:5px; font-size: 30px; font-style: normal; font-variant: normal; font-weight: 400; line-height: 20px; text-decoration:none">e</p> <p style="font-family: Lucida Handwriting, cursive; font-size: 26px; font-style: normal; font-variant: normal; font-weight: 400; line-height: 20px; color:white;text-decoration:none">TECH</p> </router-link>
             <p v-for="category in categoryList" :key="category._id" class="footer-links">
                 <a href="#" >{{category.name}}</a>
             </p>
             <p v-show="this.$store.state.user.claims && this.$store.state.user.claims.admin" class="footer-links">
-            <router-link to="./admin/contacts"><fa :icon="['fas','dashboard']"/>  Admin Panel</router-link> 
+            <router-link to="./admin/contacts">Admin Panel</router-link> 
             </p>
             <p class="footer-company-name">
                 Copyright © 2022 <strong>e Tech</strong>
@@ -90,7 +86,7 @@ footer {
 .footer-distributed {
     display:flex;
     flex-direction:row;
-    background-color: #2a2f2d;
+    background-color: #000000;
     box-sizing: border-box;
     width: 100%;
     height:100%;

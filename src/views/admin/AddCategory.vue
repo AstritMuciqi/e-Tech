@@ -73,8 +73,11 @@ export default {
 
         console.log({...this.form});
         if(this.$refs.form.validate()){
-        const response = await apiRequest.createCategory({...this.form});
-        this.$router.push({ name : "Categories", params : { message: response.message}});
+          this.$isLoading(false);
+        const response = await apiRequest.createCategory({...this.form}).finally(()=>{
+            this.$isLoading(true)
+        });
+        this.$router.push({ name : "Categories", params : { message: "Category Added Successfully!"}});
       }
       
     },
